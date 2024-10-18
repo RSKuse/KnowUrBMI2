@@ -2,35 +2,71 @@
 //  AppDelegate.swift
 //  KnowUrBMI
 //
-//  Created by Reuben Simphiwe Kuse on 2024/10/16.
+//  Created by Reuben Simphiwe Kuse on 2024/09/16.
 //
 
 import UIKit
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+    
+        requestNotificationPermission()
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+
+        window?.rootViewController = UINavigationController(rootViewController: CalculateViewController())
+
         return true
     }
 
-    // MARK: UISceneSession Lifecycle
 
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    func requestNotificationPermission() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                print("Notification permission granted!")
+                self.scheduleDailyNotifications()
+            } else {
+                print("Notification permission denied.")
+            }
+        }
     }
+    
 
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    func scheduleDailyNotifications() {
+        let center = UNUserNotificationCenter.current()
+        
+
+        let content = UNMutableNotificationContent()
+        content.title = "BMI Progress Reminder"
+        content.body = "Don't forget to check your BMI progress, workouts, and fasting today!"
+        content.sound = UNNotificationSound.default
+
+
+        var dateComponents = DateComponents()
+        dateComponents.hour = 8
+        let triggerAM = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+
+        dateComponents.hour = 18
+        let triggerPM = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+
+        let requestAM = UNNotificationRequest(identifier: "BMIReminderAM", content: content, trigger: triggerAM)
+        center.add(requestAM)
+        
+
+        let requestPM = UNNotificationRequest(identifier: "BMIReminderPM", content: content, trigger: triggerPM)
+        center.add(requestPM)
     }
-
-
 }
+
+
 

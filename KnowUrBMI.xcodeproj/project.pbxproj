@@ -6,6 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F3613A3E2CC0421800AC7BCD /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A3D2CC0421800AC7BCD /* Lottie */; };
+		F3613A492CC06A4500AC7BCD /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A482CC06A4500AC7BCD /* DGCharts */; };
+		F3613A4B2CC06A4500AC7BCD /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A4A2CC06A4500AC7BCD /* DGChartsDynamic */; };
+		F3613A4F2CC0717800AC7BCD /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A4E2CC0717800AC7BCD /* DGChartsDynamic */; };
+		F3613A512CC0719800AC7BCD /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A502CC0719800AC7BCD /* DGCharts */; };
+		F3613A532CC0719800AC7BCD /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A522CC0719800AC7BCD /* DGChartsDynamic */; };
+		F3DE7C4D2CC12E9E00750BEB /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = F3DE7C4C2CC12E9E00750BEB /* DGCharts */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		F36139E52CBFC87B00AC7BCD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -30,7 +40,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F36139F62CBFC87B00AC7BCD /* Exceptions for "KnowUrBMI" folder in "KnowUrBMI" target */ = {
+		F3613A302CBFC9DA00AC7BCD /* Exceptions for "KnowUrBMI" folder in "KnowUrBMI" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -40,14 +50,6 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F36139D02CBFC87800AC7BCD /* KnowUrBMI */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F36139F62CBFC87B00AC7BCD /* Exceptions for "KnowUrBMI" folder in "KnowUrBMI" target */,
-			);
-			path = KnowUrBMI;
-			sourceTree = "<group>";
-		};
 		F36139E72CBFC87B00AC7BCD /* KnowUrBMITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = KnowUrBMITests;
@@ -58,6 +60,14 @@
 			path = KnowUrBMIUITests;
 			sourceTree = "<group>";
 		};
+		F3613A282CBFC9D900AC7BCD /* KnowUrBMI */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F3613A302CBFC9DA00AC7BCD /* Exceptions for "KnowUrBMI" folder in "KnowUrBMI" target */,
+			);
+			path = KnowUrBMI;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +75,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3613A492CC06A4500AC7BCD /* DGCharts in Frameworks */,
+				F3613A4B2CC06A4500AC7BCD /* DGChartsDynamic in Frameworks */,
+				F3613A3E2CC0421800AC7BCD /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3613A512CC0719800AC7BCD /* DGCharts in Frameworks */,
+				F3613A4F2CC0717800AC7BCD /* DGChartsDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3DE7C4D2CC12E9E00750BEB /* DGCharts in Frameworks */,
+				F3613A532CC0719800AC7BCD /* DGChartsDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,9 +105,10 @@
 		F36139C52CBFC87800AC7BCD = {
 			isa = PBXGroup;
 			children = (
-				F36139D02CBFC87800AC7BCD /* KnowUrBMI */,
+				F3613A282CBFC9D900AC7BCD /* KnowUrBMI */,
 				F36139E72CBFC87B00AC7BCD /* KnowUrBMITests */,
 				F36139F12CBFC87B00AC7BCD /* KnowUrBMIUITests */,
+				F3DE7C4E2CC1353F00750BEB /* Frameworks */,
 				F36139CF2CBFC87800AC7BCD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +121,13 @@
 				F36139EE2CBFC87B00AC7BCD /* KnowUrBMIUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F3DE7C4E2CC1353F00750BEB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,10 +146,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				F36139D02CBFC87800AC7BCD /* KnowUrBMI */,
+				F3613A282CBFC9D900AC7BCD /* KnowUrBMI */,
 			);
 			name = KnowUrBMI;
 			packageProductDependencies = (
+				F3613A3D2CC0421800AC7BCD /* Lottie */,
+				F3613A482CC06A4500AC7BCD /* DGCharts */,
+				F3613A4A2CC06A4500AC7BCD /* DGChartsDynamic */,
 			);
 			productName = KnowUrBMI;
 			productReference = F36139CE2CBFC87800AC7BCD /* KnowUrBMI.app */;
@@ -148,6 +176,8 @@
 			);
 			name = KnowUrBMITests;
 			packageProductDependencies = (
+				F3613A4E2CC0717800AC7BCD /* DGChartsDynamic */,
+				F3613A502CC0719800AC7BCD /* DGCharts */,
 			);
 			productName = KnowUrBMITests;
 			productReference = F36139E42CBFC87B00AC7BCD /* KnowUrBMITests.xctest */;
@@ -171,6 +201,8 @@
 			);
 			name = KnowUrBMIUITests;
 			packageProductDependencies = (
+				F3613A522CC0719800AC7BCD /* DGChartsDynamic */,
+				F3DE7C4C2CC12E9E00750BEB /* DGCharts */,
 			);
 			productName = KnowUrBMIUITests;
 			productReference = F36139EE2CBFC87B00AC7BCD /* KnowUrBMIUITests.xctest */;
@@ -208,6 +240,10 @@
 			);
 			mainGroup = F36139C52CBFC87800AC7BCD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F3613A3C2CC0402300AC7BCD /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F36139CF2CBFC87800AC7BCD /* Products */;
 			projectDirPath = "";
@@ -290,11 +326,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T8C3BDQ5BW;
+				FRAMEWORK_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KnowUrBMI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -306,6 +343,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -318,11 +356,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T8C3BDQ5BW;
+				FRAMEWORK_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KnowUrBMI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -334,6 +373,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -376,6 +416,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -398,6 +439,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 			};
 			name = Debug;
 		};
@@ -439,6 +481,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -453,6 +496,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -464,6 +508,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T8C3BDQ5BW;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
@@ -471,6 +516,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KnowUrBMI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KnowUrBMI";
 			};
@@ -483,6 +529,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T8C3BDQ5BW;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
@@ -490,6 +537,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KnowUrBMI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KnowUrBMI";
 			};
@@ -501,12 +549,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T8C3BDQ5BW;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.simphiwe.KnowUrBMIUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = KnowUrBMI;
 			};
@@ -518,12 +568,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T8C3BDQ5BW;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.simphiwe.KnowUrBMIUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = KnowUrBMI;
 			};
@@ -569,6 +621,63 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F3613A3C2CC0402300AC7BCD /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+		F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F3613A3D2CC0421800AC7BCD /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3613A3C2CC0402300AC7BCD /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		F3613A482CC06A4500AC7BCD /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+		F3613A4A2CC06A4500AC7BCD /* DGChartsDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGChartsDynamic;
+		};
+		F3613A4E2CC0717800AC7BCD /* DGChartsDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGChartsDynamic;
+		};
+		F3613A502CC0719800AC7BCD /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+		F3613A522CC0719800AC7BCD /* DGChartsDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGChartsDynamic;
+		};
+		F3DE7C4C2CC12E9E00750BEB /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F36139C62CBFC87800AC7BCD /* Project object */;
 }

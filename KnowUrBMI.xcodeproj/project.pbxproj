@@ -6,16 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		F3613A3E2CC0421800AC7BCD /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A3D2CC0421800AC7BCD /* Lottie */; };
-		F3613A492CC06A4500AC7BCD /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A482CC06A4500AC7BCD /* DGCharts */; };
-		F3613A4B2CC06A4500AC7BCD /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A4A2CC06A4500AC7BCD /* DGChartsDynamic */; };
-		F3613A4F2CC0717800AC7BCD /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A4E2CC0717800AC7BCD /* DGChartsDynamic */; };
-		F3613A512CC0719800AC7BCD /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A502CC0719800AC7BCD /* DGCharts */; };
-		F3613A532CC0719800AC7BCD /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F3613A522CC0719800AC7BCD /* DGChartsDynamic */; };
-		F3DE7C4D2CC12E9E00750BEB /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = F3DE7C4C2CC12E9E00750BEB /* DGCharts */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		F36139E52CBFC87B00AC7BCD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -32,6 +22,19 @@
 			remoteInfo = KnowUrBMI;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		456DB6002CC2E44C00BAE230 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F36139CE2CBFC87800AC7BCD /* KnowUrBMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowUrBMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,9 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3613A492CC06A4500AC7BCD /* DGCharts in Frameworks */,
-				F3613A4B2CC06A4500AC7BCD /* DGChartsDynamic in Frameworks */,
-				F3613A3E2CC0421800AC7BCD /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,8 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3613A512CC0719800AC7BCD /* DGCharts in Frameworks */,
-				F3613A4F2CC0717800AC7BCD /* DGChartsDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +92,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3DE7C4D2CC12E9E00750BEB /* DGCharts in Frameworks */,
-				F3613A532CC0719800AC7BCD /* DGChartsDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +104,6 @@
 				F3613A282CBFC9D900AC7BCD /* KnowUrBMI */,
 				F36139E72CBFC87B00AC7BCD /* KnowUrBMITests */,
 				F36139F12CBFC87B00AC7BCD /* KnowUrBMIUITests */,
-				F3DE7C4E2CC1353F00750BEB /* Frameworks */,
 				F36139CF2CBFC87800AC7BCD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,13 +118,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F3DE7C4E2CC1353F00750BEB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +128,7 @@
 				F36139CA2CBFC87800AC7BCD /* Sources */,
 				F36139CB2CBFC87800AC7BCD /* Frameworks */,
 				F36139CC2CBFC87800AC7BCD /* Resources */,
+				456DB6002CC2E44C00BAE230 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -150,9 +139,6 @@
 			);
 			name = KnowUrBMI;
 			packageProductDependencies = (
-				F3613A3D2CC0421800AC7BCD /* Lottie */,
-				F3613A482CC06A4500AC7BCD /* DGCharts */,
-				F3613A4A2CC06A4500AC7BCD /* DGChartsDynamic */,
 			);
 			productName = KnowUrBMI;
 			productReference = F36139CE2CBFC87800AC7BCD /* KnowUrBMI.app */;
@@ -176,8 +162,6 @@
 			);
 			name = KnowUrBMITests;
 			packageProductDependencies = (
-				F3613A4E2CC0717800AC7BCD /* DGChartsDynamic */,
-				F3613A502CC0719800AC7BCD /* DGCharts */,
 			);
 			productName = KnowUrBMITests;
 			productReference = F36139E42CBFC87B00AC7BCD /* KnowUrBMITests.xctest */;
@@ -201,8 +185,6 @@
 			);
 			name = KnowUrBMIUITests;
 			packageProductDependencies = (
-				F3613A522CC0719800AC7BCD /* DGChartsDynamic */,
-				F3DE7C4C2CC12E9E00750BEB /* DGCharts */,
 			);
 			productName = KnowUrBMIUITests;
 			productReference = F36139EE2CBFC87B00AC7BCD /* KnowUrBMIUITests.xctest */;
@@ -241,8 +223,6 @@
 			mainGroup = F36139C52CBFC87800AC7BCD;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				F3613A3C2CC0402300AC7BCD /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F36139CF2CBFC87800AC7BCD /* Products */;
@@ -332,8 +312,7 @@
 				INFOPLIST_FILE = KnowUrBMI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,10 +320,14 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.simphiwe.KnowUrBMI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -362,8 +345,7 @@
 				INFOPLIST_FILE = KnowUrBMI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -371,10 +353,14 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.simphiwe.KnowUrBMI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -621,63 +607,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		F3613A3C2CC0402300AC7BCD /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.5.0;
-			};
-		};
-		F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F3613A3D2CC0421800AC7BCD /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3613A3C2CC0402300AC7BCD /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
-		};
-		F3613A482CC06A4500AC7BCD /* DGCharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGCharts;
-		};
-		F3613A4A2CC06A4500AC7BCD /* DGChartsDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGChartsDynamic;
-		};
-		F3613A4E2CC0717800AC7BCD /* DGChartsDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGChartsDynamic;
-		};
-		F3613A502CC0719800AC7BCD /* DGCharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGCharts;
-		};
-		F3613A522CC0719800AC7BCD /* DGChartsDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGChartsDynamic;
-		};
-		F3DE7C4C2CC12E9E00750BEB /* DGCharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3613A472CC06A4500AC7BCD /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGCharts;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F36139C62CBFC87800AC7BCD /* Project object */;
 }

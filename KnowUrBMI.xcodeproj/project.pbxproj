@@ -3,25 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		F36139E52CBFC87B00AC7BCD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F36139C62CBFC87800AC7BCD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F36139CD2CBFC87800AC7BCD;
-			remoteInfo = KnowUrBMI;
-		};
-		F36139EF2CBFC87B00AC7BCD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F36139C62CBFC87800AC7BCD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F36139CD2CBFC87800AC7BCD;
-			remoteInfo = KnowUrBMI;
-		};
-/* End PBXContainerItemProxy section */
+/* Begin PBXBuildFile section */
+		4512C34F2CC3577800DFE136 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4512C3422CC3577700DFE136 /* LaunchScreen.storyboard */; };
+		4512C3502CC3577800DFE136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4512C3402CC3577700DFE136 /* Assets.xcassets */; };
+		4512C3512CC3577800DFE136 /* BMI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512C34B2CC3577700DFE136 /* BMI.swift */; };
+		4512C3522CC3577800DFE136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512C33F2CC3577700DFE136 /* AppDelegate.swift */; };
+		4512C3532CC3577800DFE136 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512C3462CC3577700DFE136 /* ProgressViewController.swift */; };
+		4512C3542CC3577800DFE136 /* CalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512C3442CC3577700DFE136 /* CalculateViewController.swift */; };
+		4512C3552CC3577800DFE136 /* FastingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512C3452CC3577700DFE136 /* FastingViewController.swift */; };
+		4512C3562CC3577800DFE136 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512C3482CC3577700DFE136 /* WorkoutViewController.swift */; };
+		4512C3572CC3577800DFE136 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512C3472CC3577700DFE136 /* ResultViewController.swift */; };
+		4512C3582CC3577800DFE136 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512C34C2CC3577700DFE136 /* CalculatorBrain.swift */; };
+		49472EF6182EDDFE2E69A634 /* Pods_KnowUrBMI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF63848534E1E4105173FF55 /* Pods_KnowUrBMI.framework */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		456DB6002CC2E44C00BAE230 /* Embed Frameworks */ = {
@@ -37,74 +34,89 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01A7E81BD5582C02D569416C /* Pods-KnowUrBMI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnowUrBMI.debug.xcconfig"; path = "Target Support Files/Pods-KnowUrBMI/Pods-KnowUrBMI.debug.xcconfig"; sourceTree = "<group>"; };
+		4512C33F2CC3577700DFE136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4512C3402CC3577700DFE136 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4512C3412CC3577700DFE136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4512C3442CC3577700DFE136 /* CalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateViewController.swift; sourceTree = "<group>"; };
+		4512C3452CC3577700DFE136 /* FastingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingViewController.swift; sourceTree = "<group>"; };
+		4512C3462CC3577700DFE136 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		4512C3472CC3577700DFE136 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		4512C3482CC3577700DFE136 /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
+		4512C34A2CC3577700DFE136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4512C34B2CC3577700DFE136 /* BMI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMI.swift; sourceTree = "<group>"; };
+		4512C34C2CC3577700DFE136 /* CalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
+		CF63848534E1E4105173FF55 /* Pods_KnowUrBMI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KnowUrBMI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECB1E681DC9578826F4CEA53 /* Pods-KnowUrBMI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnowUrBMI.release.xcconfig"; path = "Target Support Files/Pods-KnowUrBMI/Pods-KnowUrBMI.release.xcconfig"; sourceTree = "<group>"; };
 		F36139CE2CBFC87800AC7BCD /* KnowUrBMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowUrBMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F36139E42CBFC87B00AC7BCD /* KnowUrBMITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnowUrBMITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F36139EE2CBFC87B00AC7BCD /* KnowUrBMIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnowUrBMIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F3613A302CBFC9DA00AC7BCD /* Exceptions for "KnowUrBMI" folder in "KnowUrBMI" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = F36139CD2CBFC87800AC7BCD /* KnowUrBMI */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		F36139E72CBFC87B00AC7BCD /* KnowUrBMITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = KnowUrBMITests;
-			sourceTree = "<group>";
-		};
-		F36139F12CBFC87B00AC7BCD /* KnowUrBMIUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = KnowUrBMIUITests;
-			sourceTree = "<group>";
-		};
-		F3613A282CBFC9D900AC7BCD /* KnowUrBMI */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F3613A302CBFC9DA00AC7BCD /* Exceptions for "KnowUrBMI" folder in "KnowUrBMI" target */,
-			);
-			path = KnowUrBMI;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F36139CB2CBFC87800AC7BCD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F36139E12CBFC87B00AC7BCD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F36139EB2CBFC87B00AC7BCD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				49472EF6182EDDFE2E69A634 /* Pods_KnowUrBMI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220E53A0DFB245BA54E8FBF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF63848534E1E4105173FF55 /* Pods_KnowUrBMI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4512C3432CC3577700DFE136 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				4512C3422CC3577700DFE136 /* LaunchScreen.storyboard */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		4512C3492CC3577700DFE136 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4512C3442CC3577700DFE136 /* CalculateViewController.swift */,
+				4512C3452CC3577700DFE136 /* FastingViewController.swift */,
+				4512C3462CC3577700DFE136 /* ProgressViewController.swift */,
+				4512C3472CC3577700DFE136 /* ResultViewController.swift */,
+				4512C3482CC3577700DFE136 /* WorkoutViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4512C34D2CC3577700DFE136 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4512C34B2CC3577700DFE136 /* BMI.swift */,
+				4512C34C2CC3577700DFE136 /* CalculatorBrain.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F166269BE1830E2BEBBEDD99 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01A7E81BD5582C02D569416C /* Pods-KnowUrBMI.debug.xcconfig */,
+				ECB1E681DC9578826F4CEA53 /* Pods-KnowUrBMI.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F36139C52CBFC87800AC7BCD = {
 			isa = PBXGroup;
 			children = (
 				F3613A282CBFC9D900AC7BCD /* KnowUrBMI */,
-				F36139E72CBFC87B00AC7BCD /* KnowUrBMITests */,
-				F36139F12CBFC87B00AC7BCD /* KnowUrBMIUITests */,
 				F36139CF2CBFC87800AC7BCD /* Products */,
+				F166269BE1830E2BEBBEDD99 /* Pods */,
+				220E53A0DFB245BA54E8FBF8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,10 +124,21 @@
 			isa = PBXGroup;
 			children = (
 				F36139CE2CBFC87800AC7BCD /* KnowUrBMI.app */,
-				F36139E42CBFC87B00AC7BCD /* KnowUrBMITests.xctest */,
-				F36139EE2CBFC87B00AC7BCD /* KnowUrBMIUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F3613A282CBFC9D900AC7BCD /* KnowUrBMI */ = {
+			isa = PBXGroup;
+			children = (
+				4512C33F2CC3577700DFE136 /* AppDelegate.swift */,
+				4512C3402CC3577700DFE136 /* Assets.xcassets */,
+				4512C3432CC3577700DFE136 /* Base.lproj */,
+				4512C3492CC3577700DFE136 /* Controllers */,
+				4512C34A2CC3577700DFE136 /* Info.plist */,
+				4512C34D2CC3577700DFE136 /* Model */,
+			);
+			path = KnowUrBMI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +148,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F36139F72CBFC87B00AC7BCD /* Build configuration list for PBXNativeTarget "KnowUrBMI" */;
 			buildPhases = (
+				10419BB4D19E696BCCD98B50 /* [CP] Check Pods Manifest.lock */,
 				F36139CA2CBFC87800AC7BCD /* Sources */,
 				F36139CB2CBFC87800AC7BCD /* Frameworks */,
 				F36139CC2CBFC87800AC7BCD /* Resources */,
@@ -134,61 +158,10 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				F3613A282CBFC9D900AC7BCD /* KnowUrBMI */,
-			);
 			name = KnowUrBMI;
-			packageProductDependencies = (
-			);
 			productName = KnowUrBMI;
 			productReference = F36139CE2CBFC87800AC7BCD /* KnowUrBMI.app */;
 			productType = "com.apple.product-type.application";
-		};
-		F36139E32CBFC87B00AC7BCD /* KnowUrBMITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F36139FC2CBFC87B00AC7BCD /* Build configuration list for PBXNativeTarget "KnowUrBMITests" */;
-			buildPhases = (
-				F36139E02CBFC87B00AC7BCD /* Sources */,
-				F36139E12CBFC87B00AC7BCD /* Frameworks */,
-				F36139E22CBFC87B00AC7BCD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F36139E62CBFC87B00AC7BCD /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				F36139E72CBFC87B00AC7BCD /* KnowUrBMITests */,
-			);
-			name = KnowUrBMITests;
-			packageProductDependencies = (
-			);
-			productName = KnowUrBMITests;
-			productReference = F36139E42CBFC87B00AC7BCD /* KnowUrBMITests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		F36139ED2CBFC87B00AC7BCD /* KnowUrBMIUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F36139FF2CBFC87B00AC7BCD /* Build configuration list for PBXNativeTarget "KnowUrBMIUITests" */;
-			buildPhases = (
-				F36139EA2CBFC87B00AC7BCD /* Sources */,
-				F36139EB2CBFC87B00AC7BCD /* Frameworks */,
-				F36139EC2CBFC87B00AC7BCD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F36139F02CBFC87B00AC7BCD /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				F36139F12CBFC87B00AC7BCD /* KnowUrBMIUITests */,
-			);
-			name = KnowUrBMIUITests;
-			packageProductDependencies = (
-			);
-			productName = KnowUrBMIUITests;
-			productReference = F36139EE2CBFC87B00AC7BCD /* KnowUrBMIUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -203,17 +176,10 @@
 					F36139CD2CBFC87800AC7BCD = {
 						CreatedOnToolsVersion = 16.0;
 					};
-					F36139E32CBFC87B00AC7BCD = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = F36139CD2CBFC87800AC7BCD;
-					};
-					F36139ED2CBFC87B00AC7BCD = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = F36139CD2CBFC87800AC7BCD;
-					};
 				};
 			};
 			buildConfigurationList = F36139C92CBFC87800AC7BCD /* Build configuration list for PBXProject "KnowUrBMI" */;
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -222,16 +188,11 @@
 			);
 			mainGroup = F36139C52CBFC87800AC7BCD;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-			);
-			preferredProjectObjectVersion = 77;
 			productRefGroup = F36139CF2CBFC87800AC7BCD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				F36139CD2CBFC87800AC7BCD /* KnowUrBMI */,
-				F36139E32CBFC87B00AC7BCD /* KnowUrBMITests */,
-				F36139ED2CBFC87B00AC7BCD /* KnowUrBMIUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -241,73 +202,79 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F36139E22CBFC87B00AC7BCD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F36139EC2CBFC87B00AC7BCD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				4512C34F2CC3577800DFE136 /* LaunchScreen.storyboard in Resources */,
+				4512C3502CC3577800DFE136 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10419BB4D19E696BCCD98B50 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KnowUrBMI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F36139CA2CBFC87800AC7BCD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F36139E02CBFC87B00AC7BCD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F36139EA2CBFC87B00AC7BCD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				4512C3512CC3577800DFE136 /* BMI.swift in Sources */,
+				4512C3522CC3577800DFE136 /* AppDelegate.swift in Sources */,
+				4512C3532CC3577800DFE136 /* ProgressViewController.swift in Sources */,
+				4512C3542CC3577800DFE136 /* CalculateViewController.swift in Sources */,
+				4512C3552CC3577800DFE136 /* FastingViewController.swift in Sources */,
+				4512C3562CC3577800DFE136 /* WorkoutViewController.swift in Sources */,
+				4512C3572CC3577800DFE136 /* ResultViewController.swift in Sources */,
+				4512C3582CC3577800DFE136 /* CalculatorBrain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		F36139E62CBFC87B00AC7BCD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F36139CD2CBFC87800AC7BCD /* KnowUrBMI */;
-			targetProxy = F36139E52CBFC87B00AC7BCD /* PBXContainerItemProxy */;
+/* Begin PBXVariantGroup section */
+		4512C3422CC3577700DFE136 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4512C3412CC3577700DFE136 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
 		};
-		F36139F02CBFC87B00AC7BCD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F36139CD2CBFC87800AC7BCD /* KnowUrBMI */;
-			targetProxy = F36139EF2CBFC87B00AC7BCD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F36139F82CBFC87B00AC7BCD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01A7E81BD5582C02D569416C /* Pods-KnowUrBMI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T8C3BDQ5BW;
-				FRAMEWORK_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KnowUrBMI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -333,13 +300,14 @@
 		};
 		F36139F92CBFC87B00AC7BCD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECB1E681DC9578826F4CEA53 /* Pods-KnowUrBMI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T8C3BDQ5BW;
-				FRAMEWORK_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KnowUrBMI/Info.plist;
@@ -487,86 +455,6 @@
 			};
 			name = Release;
 		};
-		F36139FD2CBFC87B00AC7BCD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T8C3BDQ5BW;
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.simphiwe.KnowUrBMITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KnowUrBMI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KnowUrBMI";
-			};
-			name = Debug;
-		};
-		F36139FE2CBFC87B00AC7BCD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T8C3BDQ5BW;
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.simphiwe.KnowUrBMITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KnowUrBMI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KnowUrBMI";
-			};
-			name = Release;
-		};
-		F3613A002CBFC87B00AC7BCD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T8C3BDQ5BW;
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.simphiwe.KnowUrBMIUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = KnowUrBMI;
-			};
-			name = Debug;
-		};
-		F3613A012CBFC87B00AC7BCD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T8C3BDQ5BW;
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.simphiwe.KnowUrBMIUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = KnowUrBMI;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -584,24 +472,6 @@
 			buildConfigurations = (
 				F36139F82CBFC87B00AC7BCD /* Debug */,
 				F36139F92CBFC87B00AC7BCD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F36139FC2CBFC87B00AC7BCD /* Build configuration list for PBXNativeTarget "KnowUrBMITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F36139FD2CBFC87B00AC7BCD /* Debug */,
-				F36139FE2CBFC87B00AC7BCD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F36139FF2CBFC87B00AC7BCD /* Build configuration list for PBXNativeTarget "KnowUrBMIUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F3613A002CBFC87B00AC7BCD /* Debug */,
-				F3613A012CBFC87B00AC7BCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

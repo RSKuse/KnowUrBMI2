@@ -3,6 +3,5 @@ project 'KnowUrBMI.xcodeproj'
 
 target 'KnowUrBMI' do
   use_frameworks!
-  pod 'Charts'
 
 end

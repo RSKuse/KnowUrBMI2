@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-//import Lottie
+import Lottie
 
 class WorkoutViewController: UIViewController {
 
@@ -35,13 +35,13 @@ class WorkoutViewController: UIViewController {
         return label
     }()
     
-//    lazy var workoutImageView: LottieAnimationView = {
-//        let animationView = LottieAnimationView(name: "workout_animation")
-//        animationView.contentMode = .scaleAspectFit
-//        animationView.loopMode = .loop
-//        animationView.translatesAutoresizingMaskIntoConstraints = false
-//        return animationView
-//    }()
+    lazy var workoutImageView: LottieAnimationView = {
+        let animationView = LottieAnimationView(name: "workout_animation")
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        return animationView
+    }()
     
     lazy var workoutRoutineLabel: UILabel = {
         let label = UILabel()
@@ -72,7 +72,7 @@ class WorkoutViewController: UIViewController {
     
     private func setupUI() {
         view.addSubview(motivationLabel)
-//        view.addSubview(workoutImageView)
+        view.addSubview(workoutImageView)
         view.addSubview(workoutRoutineLabel)
         view.addSubview(timerLabel)
         view.addSubview(startWorkoutButton)
@@ -82,10 +82,10 @@ class WorkoutViewController: UIViewController {
         motivationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         motivationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         
-//        workoutImageView.topAnchor.constraint(equalTo: motivationLabel.bottomAnchor, constant: 20).isActive = true
-//        workoutImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-//        workoutImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-//        workoutImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        workoutImageView.topAnchor.constraint(equalTo: motivationLabel.bottomAnchor, constant: 20).isActive = true
+        workoutImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        workoutImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        workoutImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         
         workoutRoutineLabel.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 20).isActive = true
         workoutRoutineLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true

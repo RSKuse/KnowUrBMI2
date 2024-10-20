@@ -1,3 +1,22 @@
-PODFILE CHECKSUM: 88b025f6a2d64ca4ac07ad5162c92aac74f88f94
+PODS:
+  - DGCharts (5.1.0):
+    - DGCharts/Core (= 5.1.0)
+  - DGCharts/Core (5.1.0)
+  - lottie-ios (4.5.0)
+
+DEPENDENCIES:
+  - DGCharts
+  - lottie-ios
+
+SPEC REPOS:
+  trunk:
+    - DGCharts
+    - lottie-ios
+
+SPEC CHECKSUMS:
+  DGCharts: 1c6daf585b6cfc78807af44ea690d357c410627f
+  lottie-ios: a881093fab623c467d3bce374367755c272bdd59
+
+PODFILE CHECKSUM: b16f1fa481ff7ca7a2dd50834bb66bfec7c66d06
 
 COCOAPODS: 1.15.2

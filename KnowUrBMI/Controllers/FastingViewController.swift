@@ -81,6 +81,8 @@ class FastingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backButtonPressed))
+        navigationItem.leftBarButtonItem = backButton
         setupUI()
     }
     
@@ -121,6 +123,10 @@ class FastingViewController: UIViewController {
         startFastingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+    @objc func backButtonPressed() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @objc func fastingTypeChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -147,6 +153,7 @@ class FastingViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
+    
     
     func calculateCaloriesLost(for days: Int) -> Int {
         if userBMI > 24.9 {

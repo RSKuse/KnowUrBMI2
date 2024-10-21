@@ -74,7 +74,7 @@ class WorkoutViewController: UIViewController {
     
     private func setupUI() {
         view.addSubview(motivationLabel)
-//        view.addSubview(workoutImageView)
+        view.addSubview(workoutImageView)
         view.addSubview(workoutRoutineLabel)
         view.addSubview(timerLabel)
         view.addSubview(startWorkoutButton)
@@ -133,5 +133,9 @@ class WorkoutViewController: UIViewController {
         let alertController = UIAlertController(title: "Workout Complete!", message: "You have burned \(caloriesBurned) calories!", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    @objc func showProgress() {
+        let progressVC = ProgressViewController()
+        navigationController?.pushViewController(progressVC, animated: true)
     }
 }

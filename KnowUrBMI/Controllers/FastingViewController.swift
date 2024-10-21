@@ -8,11 +8,25 @@
 import Foundation
 import UIKit
 
-class FastingViewController: UIViewController {
 
-    var fastingDuration: Int = 3
-    var userBMI: Float = 0.0
+class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    var fastingDuration: Int = 1 // Default day 1
+    var userBMI: Float = 0.0
+    var fastingTimer: Timer?
+    var fastingDurationRemaining: Int = 0 // Will be calculated based on selected days
+    var isFastingActive = false
+    
+    // Array of Bible verses about fasting with their explanations
+    let fastingVerses = [
+        ("Matthew 6:16", "When you fast, do not look somber as the hypocrites do, for they disfigure their faces to show others they are fasting.", "This verse teaches us to fast humbly and for spiritual purposes, not to seek admiration from others."),
+        ("Isaiah 58:6", "Is not this the kind of fasting I have chosen: to loose the chains of injustice?", "This verse emphasizes fasting as a way to fight against injustice and oppression."),
+        ("Joel 2:12", "Return to me with all your heart, with fasting and weeping and mourning.", "Fasting is a form of repentance and drawing closer to God."),
+        ("Luke 4:2", "For forty days he was tempted by the devil. He ate nothing during those days.", "Jesus fasted for strength and spiritual clarity during his trials."),
+        ("Psalm 35:13", "I humbled my soul with fasting; And my prayer kept returning to me.", "Fasting helps to humble the soul and strengthen prayers.")
+    ]
+    
+    // UI Elements
     lazy var fastingTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Choose Your Fasting Type"
@@ -31,49 +45,73 @@ class FastingViewController: UIViewController {
         return segmentedControl
     }()
     
-    lazy var fastingDaysLabel: UILabel = {
+    // Label to trigger picker view
+    lazy var chooseDaysLabel: UILabel = {
         let label = UILabel()
-        label.text = "Select Fasting Days"
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.text = "Choose Your Days"
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.textAlignment = .center
+        label.textColor = .systemBlue
+        label.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDayPicker))
+        label.addGestureRecognizer(tapGesture)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy var fastingDaysSlider: UISlider = {
+    // Picker for selecting fasting days (initially hidden)
+    lazy var dayPicker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.dataSource = self // Set dataSource
+        picker.delegate = self // Set delegate
+        picker.isHidden = true // Hidden initially
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
+    
+    // Dynamic Verse Label (hidden initially)
+    lazy var verseLabel: UILabel = {
+        let label = UILabel()
+        label.text = "" // Empty initially
+        label.font = UIFont(name: "Chalkboard SE", size: 24) // Cartoonish font
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.isHidden = true // Hidden initially
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    // Verse Explanation Label (hidden initially)
+    lazy var verseExplanationLabel: UILabel = {
+        let label = UILabel()
+        label.text = "" // Empty initially
+        label.font = UIFont(name: "Chalkboard SE", size: 16)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.isHidden = true // Hidden initially
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    // Progress Slider for tracking fasting days
+    lazy var progressSlider: UISlider = {
         let slider = UISlider()
-        slider.minimumValue = 3
-        slider.maximumValue = 21
-        slider.value = 3
-        slider.addTarget(self, action: #selector(fastingDaysChanged(_:)), for: .valueChanged)
+        slider.minimumValue = 1
+        slider.maximumValue = 31
+        slider.value = 1
         slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.isUserInteractionEnabled = false // To prevent manual changes
         return slider
     }()
     
-    lazy var fastingDaysValueLabel: UILabel = {
-        let label = UILabel()
-        label.text = "3 Days"
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    lazy var fastingDescriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "The Daniel Fast is a plant-based fast that is intended to lead to spiritual clarity and physical health."
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    lazy var startFastingButton: UIButton = {
+    // Fasting Button
+    lazy var fastingButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Start Fasting", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(startFastingPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(fastingButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -81,19 +119,18 @@ class FastingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        let backButton = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backButtonPressed))
-        navigationItem.leftBarButtonItem = backButton
         setupUI()
     }
     
     private func setupUI() {
         view.addSubview(fastingTitleLabel)
         view.addSubview(fastingOptions)
-        view.addSubview(fastingDaysLabel)
-        view.addSubview(fastingDaysSlider)
-        view.addSubview(fastingDaysValueLabel)
-        view.addSubview(fastingDescriptionLabel)
-        view.addSubview(startFastingButton)
+        view.addSubview(chooseDaysLabel)
+        view.addSubview(dayPicker)
+        view.addSubview(progressSlider)
+        view.addSubview(verseLabel)
+        view.addSubview(verseExplanationLabel)
+        view.addSubview(fastingButton)
         
         // Set constraints
         fastingTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
@@ -103,57 +140,97 @@ class FastingViewController: UIViewController {
         fastingOptions.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         fastingOptions.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
-        fastingDaysLabel.topAnchor.constraint(equalTo: fastingOptions.bottomAnchor, constant: 20).isActive = true
-        fastingDaysLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        chooseDaysLabel.topAnchor.constraint(equalTo: fastingOptions.bottomAnchor, constant: 20).isActive = true
+        chooseDaysLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        fastingDaysSlider.topAnchor.constraint(equalTo: fastingDaysLabel.bottomAnchor, constant: 20).isActive = true
-        fastingDaysSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        fastingDaysSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        dayPicker.topAnchor.constraint(equalTo: chooseDaysLabel.bottomAnchor, constant: 10).isActive = true
+        dayPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        fastingDaysValueLabel.topAnchor.constraint(equalTo: fastingDaysSlider.bottomAnchor, constant: 10).isActive = true
-        fastingDaysValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        progressSlider.topAnchor.constraint(equalTo: dayPicker.bottomAnchor, constant: 20).isActive = true
+        progressSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        progressSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         
-        fastingDescriptionLabel.topAnchor.constraint(equalTo: fastingDaysValueLabel.bottomAnchor, constant: 20).isActive = true
-        fastingDescriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        fastingDescriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        verseLabel.topAnchor.constraint(equalTo: progressSlider.bottomAnchor, constant: 20).isActive = true
+        verseLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        verseLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         
-        startFastingButton.topAnchor.constraint(equalTo: fastingDescriptionLabel.bottomAnchor, constant: 40).isActive = true
-        startFastingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        startFastingButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        startFastingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        verseExplanationLabel.topAnchor.constraint(equalTo: verseLabel.bottomAnchor, constant: 10).isActive = true
+        verseExplanationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        verseExplanationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        
+        fastingButton.topAnchor.constraint(equalTo: verseExplanationLabel.bottomAnchor, constant: 40).isActive = true
+        fastingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        fastingButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        fastingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    @objc func backButtonPressed() {
-        navigationController?.popViewController(animated: true)
+    @objc func showDayPicker() {
+        // Show the picker view when label is tapped
+        dayPicker.isHidden = false
+        verseLabel.isHidden = true
+        verseExplanationLabel.isHidden = true
     }
     
-    @objc func fastingTypeChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            fastingDescriptionLabel.text = "The Daniel Fast is a plant-based fast that is intended to lead to spiritual clarity and physical health."
-        case 1:
-            fastingDescriptionLabel.text = "Dry Fasting is an advanced form of fasting that involves no consumption of food or water for a set period."
-        case 2:
-            fastingDescriptionLabel.text = "Wet Fasting involves abstaining from solid food while consuming liquids such as water and tea."
-        default:
-            break
+    @objc func fastingButtonPressed() {
+        if isFastingActive {
+            stopFasting()
+        } else {
+            startFasting()
         }
     }
     
-    @objc func fastingDaysChanged(_ sender: UISlider) {
-        fastingDuration = Int(sender.value)
-        fastingDaysValueLabel.text = "\(fastingDuration) Days"
+    func startFasting() {
+        isFastingActive = true
+        fastingDurationRemaining = fastingDuration * 86400 // Convert days to seconds
+        fastingTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateFastingTimer), userInfo: nil, repeats: true)
+        
+        // Hide picker and show verse and explanation
+        dayPicker.isHidden = true
+        let randomVerse = getRandomVerse()
+        verseLabel.text = randomVerse.0
+        verseExplanationLabel.text = randomVerse.2
+        verseLabel.isHidden = false
+        verseExplanationLabel.isHidden = false
+        
+        // Update button to "Stop Fasting"
+        fastingButton.setTitle("Stop Fasting", for: .normal)
+        fastingButton.backgroundColor = .red
     }
     
-    @objc func startFastingPressed() {
-        // Logic to track the user's fasting journey and calories lost
+    func stopFasting() {
+        isFastingActive = false
+        fastingTimer?.invalidate()
+        fastingTimer = nil
+        
+        // Hide verse and reset UI
+        verseLabel.isHidden = true
+        verseExplanationLabel.isHidden = true
+        fastingButton.setTitle("Start Fasting", for: .normal)
+        fastingButton.backgroundColor = .systemGreen
+    }
+    
+    @objc func updateFastingTimer() {
+        if fastingDurationRemaining > 0 {
+            fastingDurationRemaining -= 1
+            let hours = fastingDurationRemaining / 3600
+            let minutes = (fastingDurationRemaining % 3600) / 60
+            progressSlider.value = Float(fastingDurationRemaining) / Float(fastingDuration * 86400) // Update slider
+            
+            // Update days remaining
+            chooseDaysLabel.text = "\(hours / 24) days remaining"
+        } else {
+            stopFasting()
+            showFastingResult()
+        }
+    }
+    
+    func showFastingResult() {
         let caloriesLost = calculateCaloriesLost(for: fastingDuration)
         
-        let alertController = UIAlertController(title: "Fasting Complete!", message: "You have lost \(caloriesLost) calories in \(fastingDuration) days!", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Fasting Complete!", message: "You have fasted for \(fastingDuration) days and lost \(caloriesLost) calories!", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
-    
     
     func calculateCaloriesLost(for days: Int) -> Int {
         if userBMI > 24.9 {
@@ -161,7 +238,36 @@ class FastingViewController: UIViewController {
         } else if userBMI < 18.5 {
             return days * 100
         } else {
-            return days * 200 
+            return days * 200
         }
+    }
+    
+    // Function to get a random verse and explanation
+    func getRandomVerse() -> (String, String, String) {
+        return fastingVerses.randomElement() ?? ("No Verse", "No Explanation", "No Explanation")
+    }
+    
+    @objc func fastingTypeChanged(_ sender: UISegmentedControl) {
+        // This function is triggered when the user changes the fasting type.
+        // You can add logic here if you'd like the app to behave differently for each fasting type.
+    }
+    
+    // MARK: UIPickerViewDataSource Methods
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1 // Only 1 component for days
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 31 // Allow selection of 1 to 31 days
+    }
+    
+    // MARK: UIPickerViewDelegate Methods
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(row + 1) Days"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        fastingDuration = row + 1 // Update the fasting duration
+        chooseDaysLabel.text = "Selected: \(fastingDuration) Days"
     }
 }

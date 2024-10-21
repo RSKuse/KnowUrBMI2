@@ -207,7 +207,7 @@ class CalculateViewController: UIViewController {
         resultVC.advice = calculatorBrain.getAdvice()
         resultVC.color = calculatorBrain.getColor()
         
-        resultVC.modalPresentationStyle = .fullScreen
-        present(resultVC, animated: true, completion: nil)
+        // Push the ResultViewController onto the navigation stack
+        navigationController?.pushViewController(resultVC, animated: true)
     }
 }

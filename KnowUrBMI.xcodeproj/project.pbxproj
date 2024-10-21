@@ -18,6 +18,8 @@
 		4512C3572CC3577800DFE136 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512C3472CC3577700DFE136 /* ResultViewController.swift */; };
 		4512C3582CC3577800DFE136 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512C34C2CC3577700DFE136 /* CalculatorBrain.swift */; };
 		49472EF6182EDDFE2E69A634 /* Pods_KnowUrBMI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF63848534E1E4105173FF55 /* Pods_KnowUrBMI.framework */; };
+		F3D73B082CC5902B00D6BAFA /* workout_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = F3D73B072CC5902B00D6BAFA /* workout_animation.json */; };
+		F3D73B0A2CC5C80700D6BAFA /* the_background.json in Resources */ = {isa = PBXBuildFile; fileRef = F3D73B092CC5C80700D6BAFA /* the_background.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +51,8 @@
 		CF63848534E1E4105173FF55 /* Pods_KnowUrBMI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KnowUrBMI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB1E681DC9578826F4CEA53 /* Pods-KnowUrBMI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnowUrBMI.release.xcconfig"; path = "Target Support Files/Pods-KnowUrBMI/Pods-KnowUrBMI.release.xcconfig"; sourceTree = "<group>"; };
 		F36139CE2CBFC87800AC7BCD /* KnowUrBMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowUrBMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3D73B072CC5902B00D6BAFA /* workout_animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = workout_animation.json; sourceTree = "<group>"; };
+		F3D73B092CC5C80700D6BAFA /* the_background.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = the_background.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,13 +110,14 @@
 				01A7E81BD5582C02D569416C /* Pods-KnowUrBMI.debug.xcconfig */,
 				ECB1E681DC9578826F4CEA53 /* Pods-KnowUrBMI.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		F36139C52CBFC87800AC7BCD = {
 			isa = PBXGroup;
 			children = (
+				F3D73B072CC5902B00D6BAFA /* workout_animation.json */,
+				F3D73B092CC5C80700D6BAFA /* the_background.json */,
 				F3613A282CBFC9D900AC7BCD /* KnowUrBMI */,
 				F36139CF2CBFC87800AC7BCD /* Products */,
 				F166269BE1830E2BEBBEDD99 /* Pods */,
@@ -203,8 +208,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3D73B082CC5902B00D6BAFA /* workout_animation.json in Resources */,
 				4512C34F2CC3577800DFE136 /* LaunchScreen.storyboard in Resources */,
 				4512C3502CC3577800DFE136 /* Assets.xcassets in Resources */,
+				F3D73B0A2CC5C80700D6BAFA /* the_background.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +298,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T8C3BDQ5BW;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -325,6 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T8C3BDQ5BW;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/PackageFrameworks";
 				GENERATE_INFOPLIST_FILE = YES;

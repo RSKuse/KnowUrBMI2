@@ -73,7 +73,8 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     lazy var verseLabel: UILabel = {
         let label = UILabel()
         label.text = "" // Empty initially
-        label.font = UIFont(name: "Chalkboard SE", size: 24) // Cartoonish font
+        label.font = UIFont(name: "Chalkboard SE", size: 18)// Cartoonish font
+        label.textColor = .systemRed
         label.numberOfLines = 0
         label.textAlignment = .center
         label.isHidden = true // Hidden initially
@@ -100,7 +101,7 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         slider.maximumValue = 31
         slider.value = 1
         slider.translatesAutoresizingMaskIntoConstraints = false
-        slider.isUserInteractionEnabled = false // To prevent manual changes
+        slider.isUserInteractionEnabled = true // To prevent manual changes
         return slider
     }()
     
@@ -187,8 +188,12 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         // Hide picker and show verse and explanation
         dayPicker.isHidden = true
         let randomVerse = getRandomVerse()
-        verseLabel.text = randomVerse.0
-        verseExplanationLabel.text = randomVerse.2
+        let fullVerse = "\(randomVerse.0): \(randomVerse.1)"
+        let verseExplanation = randomVerse.2
+        
+        verseLabel.text = fullVerse
+        verseExplanationLabel.text = verseExplanation
+        
         verseLabel.isHidden = false
         verseExplanationLabel.isHidden = false
         
@@ -207,17 +212,31 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         verseExplanationLabel.isHidden = true
         fastingButton.setTitle("Start Fasting", for: .normal)
         fastingButton.backgroundColor = .systemGreen
+        
+        // Reset the progress
+        progressSlider.value = 1
+        chooseDaysLabel.text = "Choose Your Days"
+    }
+    
+    
+    func confirmStopFasting() {
+        let alertController = UIAlertController(title: "Stop Fasting?", message: "Are you sure you want to stop fasting?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
+            self.stopFasting()
+        }))
+        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     @objc func updateFastingTimer() {
         if fastingDurationRemaining > 0 {
             fastingDurationRemaining -= 1
             let hours = fastingDurationRemaining / 3600
-            let minutes = (fastingDurationRemaining % 3600) / 60
-            progressSlider.value = Float(fastingDurationRemaining) / Float(fastingDuration * 86400) // Update slider
+            let daysRemaining = hours / 24
+            progressSlider.value = Float(fastingDurationRemaining) / Float(fastingDuration * 86400)
             
             // Update days remaining
-            chooseDaysLabel.text = "\(hours / 24) days remaining"
+            chooseDaysLabel.text = "\(daysRemaining) days remaining"
         } else {
             stopFasting()
             showFastingResult()
@@ -241,16 +260,35 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             return days * 200
         }
     }
+
     
     // Function to get a random verse and explanation
     func getRandomVerse() -> (String, String, String) {
         return fastingVerses.randomElement() ?? ("No Verse", "No Explanation", "No Explanation")
     }
     
+    
+    
+    
     @objc func fastingTypeChanged(_ sender: UISegmentedControl) {
-        // This function is triggered when the user changes the fasting type.
-        // You can add logic here if you'd like the app to behave differently for each fasting type.
+        var fastingTypeExplanation = ""
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            fastingTypeExplanation = "You have chosen Daniel Fast. A plant-based fast intended for spiritual clarity and physical health. Meals: fruits, vegetables, nuts."
+        case 1:
+            fastingTypeExplanation = "You have chosen Dry Fast. A more intense fast with no food or water. Be mindful of your health."
+        case 2:
+            fastingTypeExplanation = "You have chosen Wet Fast. Abstaining from solid food but liquids are allowed, such as water and herbal teas."
+        default:
+            break
+        }
+        
+        let alertController = UIAlertController(title: "Fasting Type", message: fastingTypeExplanation, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
+    
     
     // MARK: UIPickerViewDataSource Methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

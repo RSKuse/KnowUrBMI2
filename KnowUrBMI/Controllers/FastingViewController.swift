@@ -188,14 +188,12 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         verseExplanationLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         verseExplanationLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
-        //healthTipLabel.topAnchor.constraint(equalTo: fastingOptions.bottomAnchor, constant: -20).isActive = true
+//        healthTipLabel.topAnchor.constraint(equalTo: fastingOptions.bottomAnchor, constant: -50).isActive = true
         healthTipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         healthTipLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         healthTipLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         healthTipLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
-//        healthTipLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-//        healthTipLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
         fastingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
         fastingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

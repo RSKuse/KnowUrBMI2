@@ -184,6 +184,38 @@ class CalculateViewController: UIViewController {
         techButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         techButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
+
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateColorsForCurrentMode()
+        }
+    }
+    
+    func updateColorsForCurrentMode() {
+        let currentInterfaceStyle = traitCollection.userInterfaceStyle
+        
+        // Update background and text colors depending on the current interface style
+        if currentInterfaceStyle == .dark {
+            view.backgroundColor = .black
+            titleLabel.textColor = .white
+            heightLabel.textColor = .lightGray
+            heightValueLabel.textColor = .lightGray
+            weightLabel.textColor = .lightGray
+            weightValueLabel.textColor = .lightGray
+            techButton.setTitleColor(.white, for: .normal)
+        } else {
+            view.backgroundColor = .white
+            titleLabel.textColor = .darkGray
+            heightLabel.textColor = .black
+            heightValueLabel.textColor = .black
+            weightLabel.textColor = .black
+            weightValueLabel.textColor = .black
+            techButton.setTitleColor(.purple, for: .normal)
+        }
     }
     
     @objc func heightSliderChanged(_ sender: UISlider) {

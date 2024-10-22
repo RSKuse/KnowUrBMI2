@@ -7,4 +7,5 @@ target 'KnowUrBMI' do
   # Add DGCharts pod
   pod 'DGCharts'
   pod 'lottie-ios'
+  pod 'Kingfisher', '~> 5.15'
 end

@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-
     func requestNotificationPermission() {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
@@ -44,13 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         content.sound = UNNotificationSound.default
         
         var dateComponents = DateComponents()
-        dateComponents.hour = 8 // 8 AM
+        dateComponents.hour = 8
         let triggerAM = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
-        dateComponents.hour = 12 // 12 PM
+        dateComponents.hour = 12
         let triggerMidday = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
-        dateComponents.hour = 18 // 6 PM
+        dateComponents.hour = 18
         let triggerPM = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
         let requestAM = UNNotificationRequest(identifier: "BMIReminderAM", content: content, trigger: triggerAM)

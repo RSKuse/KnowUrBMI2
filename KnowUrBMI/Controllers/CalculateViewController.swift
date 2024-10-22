@@ -19,7 +19,6 @@ class CalculateViewController: UIViewController {
         imageView.image = UIImage(named: "calculate_background")
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        //imageView.backgroundColor = .red
         return imageView
     }()
     
@@ -87,17 +86,6 @@ class CalculateViewController: UIViewController {
         return slider
     }()
     
-//    lazy var calculateButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("CALCULATE", for: .normal)
-//        button.setTitleColor(.white, for: .normal)
-//        button.backgroundColor = .systemPurple
-//        button.layer.cornerRadius = 10
-//        button.addTarget(self, action: #selector(calculatePressed), for: .touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-    
     lazy var techButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("CALCULATE", for: .normal)
@@ -138,7 +126,6 @@ class CalculateViewController: UIViewController {
         view.addSubview(weightLabel)
         view.addSubview(weightValueLabel)
         view.addSubview(weightSlider)
-//        view.addSubview(calculateButton)
         view.addSubview(techButton)
         
     
@@ -172,12 +159,6 @@ class CalculateViewController: UIViewController {
         weightSlider.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 20).isActive = true
         weightSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         weightSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        
-//        calculateButton.topAnchor.constraint(equalTo: weightSlider.bottomAnchor, constant: 40).isActive = true
-//        calculateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        calculateButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-//        calculateButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
 
         techButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         techButton.topAnchor.constraint(equalTo: weightSlider.bottomAnchor, constant: 40).isActive = true
@@ -198,7 +179,6 @@ class CalculateViewController: UIViewController {
     func updateColorsForCurrentMode() {
         let currentInterfaceStyle = traitCollection.userInterfaceStyle
         
-        // Update background and text colors depending on the current interface style
         if currentInterfaceStyle == .dark {
             view.backgroundColor = .black
             titleLabel.textColor = .white
@@ -239,7 +219,6 @@ class CalculateViewController: UIViewController {
         resultVC.advice = calculatorBrain.getAdvice()
         resultVC.color = calculatorBrain.getColor()
         
-        // Push the ResultViewController onto the navigation stack
         navigationController?.pushViewController(resultVC, animated: true)
     }
 }

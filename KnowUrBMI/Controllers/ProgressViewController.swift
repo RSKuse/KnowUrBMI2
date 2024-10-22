@@ -27,12 +27,12 @@ class ProgressViewController: UIViewController {
     
     private func setupUI() {
         view.addSubview(pieChartView)
-        NSLayoutConstraint.activate([
-            pieChartView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            pieChartView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            pieChartView.widthAnchor.constraint(equalToConstant: 300),
-            pieChartView.heightAnchor.constraint(equalToConstant: 300)
-        ])
+        
+        pieChartView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        pieChartView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        pieChartView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        pieChartView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        
     }
     
     func updatePieChartData() {

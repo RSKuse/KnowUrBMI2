@@ -159,11 +159,6 @@ class ResultViewController: UIViewController {
         progressButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-//    @objc func workoutPressed() {
-//        let workoutVC = WorkoutViewController()
-//        workoutVC.modalPresentationStyle = .fullScreen
-//        navigationController?.pushViewController(workoutVC, animated: true)
-//    }
     
     @objc func workoutPressed() {
         let workoutVC = WorkoutViewController()

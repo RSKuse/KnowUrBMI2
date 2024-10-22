@@ -82,8 +82,20 @@ class ResultViewController: UIViewController {
         return button
     }()
     
+    lazy var progressButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("View Progress", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemPurple
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(showProgress), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backButtonTitle = "Back"
         
         view.backgroundColor = color ?? .red
         
@@ -112,6 +124,7 @@ class ResultViewController: UIViewController {
         view.addSubview(recalculateButton)
         view.addSubview(workoutButton)
         view.addSubview(fastingButton)
+        view.addSubview(progressButton)
         
         resultBackgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         resultBackgroundImageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -139,21 +152,30 @@ class ResultViewController: UIViewController {
         recalculateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         recalculateButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         recalculateButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        progressButton.topAnchor.constraint(equalTo: fastingButton.bottomAnchor, constant: 20).isActive = true
+        progressButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        progressButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        progressButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     @objc func workoutPressed() {
         let workoutVC = WorkoutViewController()
         workoutVC.modalPresentationStyle = .fullScreen
-        present(workoutVC, animated: true, completion: nil)
+        navigationController?.pushViewController(workoutVC, animated: true)
     }
     
     @objc func fastingPressed() {
         let fastingVC = FastingViewController()
-        fastingVC.modalPresentationStyle = .fullScreen
-        present(fastingVC, animated: true, completion: nil)
+        navigationController?.pushViewController(fastingVC, animated: true)
     }
     
     @objc func recalculatePressed() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func showProgress() {
+        let progressVC = ProgressViewController()
+        navigationController?.pushViewController(progressVC, animated: true)
     }
 }

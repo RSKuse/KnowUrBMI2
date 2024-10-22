@@ -29,7 +29,13 @@ class ProgressViewController: UIViewController {
     
     private func setupUI() {
         view.addSubview(chartView)
-//        
+
+       
+      // Layout constraints
+    
+
+     // Api call
+
 
         chartView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         chartView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -44,13 +50,11 @@ class ProgressViewController: UIViewController {
             let dataEntry = ChartDataEntry(x: Double(index), y: bmi)
             dataEntries.append(dataEntry)
         }
-       
         let chartDataSet = LineChartDataSet(entries: dataEntries, label: "BMI Progress")
         chartDataSet.colors = [NSUIColor.systemPurple]
         chartDataSet.circleColors = [NSUIColor.systemPurple]
         chartDataSet.circleRadius = 5.0
         chartDataSet.lineWidth = 2.0
-     
         let chartData = LineChartData(dataSet: chartDataSet)
         chartView.data = chartData
     }

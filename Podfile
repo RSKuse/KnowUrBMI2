@@ -4,9 +4,7 @@ project 'KnowUrBMI.xcodeproj'
 
 target 'KnowUrBMI' do
   use_frameworks!
-
-  # Use DGCharts instead of Charts
+  # Add DGCharts pod
   pod 'DGCharts'
-
   pod 'lottie-ios'
 end

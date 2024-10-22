@@ -16,6 +16,8 @@ class WorkoutViewController: UIViewController {
     var caloriesBurned: Int = 0
     var userBMI: Float = 0.0
     
+    
+    
     lazy var timerLabel: UILabel = {
         let label = UILabel()
         label.text = "30:00"
@@ -131,5 +133,9 @@ class WorkoutViewController: UIViewController {
         let alertController = UIAlertController(title: "Workout Complete!", message: "You have burned \(caloriesBurned) calories!", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    @objc func showProgress() {
+        let progressVC = ProgressViewController()
+        navigationController?.pushViewController(progressVC, animated: true)
     }
 }

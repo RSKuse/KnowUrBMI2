@@ -18,6 +18,19 @@ class WorkoutViewController: UIViewController {
     var workoutCompletedDays: Int = 0
     var totalCaloriesBurned: Int = 3500 // Simulated calories burned for demonstration
 
+    // Gradient Background View
+    lazy var backgroundView: UIView = {
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.systemIndigo.cgColor, UIColor.black.cgColor]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.insertSublayer(gradient, at: 0)
+        return view
+    }()
+    
     // Workout Suggestion Label
     lazy var workoutLabel: UILabel = {
         let label = UILabel()
@@ -26,6 +39,10 @@ class WorkoutViewController: UIViewController {
         label.textAlignment = .center
         label.textColor = .systemPurple
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.layer.shadowColor = UIColor.white.cgColor
+        label.layer.shadowOpacity = 0.8
+        label.layer.shadowOffset = CGSize(width: 0, height: 0)
+        label.layer.shadowRadius = 10
         return label
     }()
     
@@ -51,51 +68,73 @@ class WorkoutViewController: UIViewController {
         return label
     }()
     
-    // Start Workout Button
+    // Start Workout Button (futuristic design)
     lazy var startWorkoutButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Start Workout", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemGreen
-        button.layer.cornerRadius = 10
+        button.backgroundColor = .clear
+        button.layer.cornerRadius = 25
+        button.layer.borderColor = UIColor.systemGreen.cgColor
+        button.layer.borderWidth = 3
+        button.layer.shadowColor = UIColor.systemGreen.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 0)
+        button.layer.shadowOpacity = 0.8
+        button.layer.shadowRadius = 15
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.addTarget(self, action: #selector(startWorkout), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    // End Workout Button
+    // End Workout Button (futuristic design)
     lazy var endWorkoutButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("End Workout", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemRed
-        button.layer.cornerRadius = 10
+        button.backgroundColor = .clear
+        button.layer.cornerRadius = 25
+        button.layer.borderColor = UIColor.systemRed.cgColor
+        button.layer.borderWidth = 3
+        button.layer.shadowColor = UIColor.systemRed.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 0)
+        button.layer.shadowOpacity = 0.8
+        button.layer.shadowRadius = 15
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.isHidden = true
         button.addTarget(self, action: #selector(endWorkout), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    // Timer Label
+    // Timer Label (futuristic glowing)
     lazy var timerLabel: UILabel = {
         let label = UILabel()
         label.text = "00:00"
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.font = UIFont.monospacedDigitSystemFont(ofSize: 36, weight: .bold)
         label.textAlignment = .center
-        label.textColor = .systemBlue
+        label.textColor = .cyan
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.layer.shadowColor = UIColor.cyan.cgColor
+        label.layer.shadowOpacity = 0.8
+        label.layer.shadowOffset = CGSize(width: 0, height: 0)
+        label.layer.shadowRadius = 10
         return label
     }()
     
-    // Motivational Text
+    // Motivational Text (futuristic glow)
     lazy var motivationLabel: UILabel = {
         let label = UILabel()
         label.text = "Stay Strong! Your Health is Your Wealth 💪"
-        label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 22, weight: .medium)
         label.numberOfLines = 2
         label.textAlignment = .center
         label.textColor = .systemPurple
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.layer.shadowColor = UIColor.purple.cgColor
+        label.layer.shadowOpacity = 0.8
+        label.layer.shadowOffset = CGSize(width: 0, height: 0)
+        label.layer.shadowRadius = 10
         return label
     }()
     
@@ -111,7 +150,6 @@ class WorkoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupUI()
         showWorkoutSuggestion()
         simulateGraph() // Simulate the graph display
@@ -124,12 +162,13 @@ class WorkoutViewController: UIViewController {
     }
     
     private func setupUI() {
-        // Adding all views to the main view
+        view.addSubview(backgroundView)
+        backgroundView.frame = view.bounds
+        
         [workoutLabel, suggestionLabel, mealPlanLabel, startWorkoutButton, endWorkoutButton, workoutImageView, motivationLabel, timerLabel].forEach {
             view.addSubview($0)
         }
         
-        // Constraints
         NSLayoutConstraint.activate([
             workoutLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             workoutLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -142,24 +181,23 @@ class WorkoutViewController: UIViewController {
             mealPlanLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             mealPlanLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            startWorkoutButton.topAnchor.constraint(equalTo: mealPlanLabel.bottomAnchor, constant: 20),
-            startWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startWorkoutButton.widthAnchor.constraint(equalToConstant: 200),
-            startWorkoutButton.heightAnchor.constraint(equalToConstant: 50),
+            startWorkoutButton.topAnchor.constraint(equalTo: mealPlanLabel.bottomAnchor, constant: 30),
+            startWorkoutButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: -160),
+            startWorkoutButton.widthAnchor.constraint(equalToConstant: 120),
+            startWorkoutButton.heightAnchor.constraint(equalToConstant: 60),
             
-            endWorkoutButton.topAnchor.constraint(equalTo: startWorkoutButton.bottomAnchor, constant: 20),
-            endWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            endWorkoutButton.widthAnchor.constraint(equalToConstant: 200),
-            endWorkoutButton.heightAnchor.constraint(equalToConstant: 50),
+            endWorkoutButton.topAnchor.constraint(equalTo: mealPlanLabel.bottomAnchor, constant: 30),
+            endWorkoutButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 40),
+            endWorkoutButton.widthAnchor.constraint(equalToConstant: 120),
+            endWorkoutButton.heightAnchor.constraint(equalToConstant: 60),
             
-            workoutImageView.topAnchor.constraint(equalTo: endWorkoutButton.bottomAnchor, constant: 0),
+            workoutImageView.topAnchor.constraint(equalTo: startWorkoutButton.bottomAnchor, constant: 40),
             workoutImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             workoutImageView.heightAnchor.constraint(equalToConstant: 200),
             
             motivationLabel.topAnchor.constraint(equalTo: workoutImageView.bottomAnchor, constant: 20),
             motivationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             motivationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            motivationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             timerLabel.topAnchor.constraint(equalTo: motivationLabel.bottomAnchor, constant: 20),
             timerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -240,5 +278,3 @@ class WorkoutViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
-
-    

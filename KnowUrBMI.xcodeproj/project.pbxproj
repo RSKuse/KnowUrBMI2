@@ -87,9 +87,9 @@
 			isa = PBXGroup;
 			children = (
 				4512C3442CC3577700DFE136 /* CalculateViewController.swift */,
+				4512C3472CC3577700DFE136 /* ResultViewController.swift */,
 				4512C3452CC3577700DFE136 /* FastingViewController.swift */,
 				4512C3462CC3577700DFE136 /* ProgressViewController.swift */,
-				4512C3472CC3577700DFE136 /* ResultViewController.swift */,
 				4512C3482CC3577700DFE136 /* WorkoutViewController.swift */,
 			);
 			path = Controllers;

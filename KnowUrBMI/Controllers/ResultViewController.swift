@@ -159,8 +159,13 @@ class ResultViewController: UIViewController {
         progressButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+    
     @objc func workoutPressed() {
         let workoutVC = WorkoutViewController()
+        
+        // Pass calculated BMI and advice from ResultViewController to WorkoutViewController
+        workoutVC.userBMI = Float(bmiValue ?? "0") ?? 0.0
+        
         workoutVC.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(workoutVC, animated: true)
     }

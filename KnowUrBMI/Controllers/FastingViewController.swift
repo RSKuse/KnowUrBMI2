@@ -11,21 +11,20 @@ import UIKit
 
 class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var fastingDuration: Int = 1 // Default day 1
+    var fastingDuration: Int = 1
     var userBMI: Float = 0.0
     var fastingTimer: Timer?
-    var fastingDurationRemaining: Int = 0 // Will be calculated based on selected days
+    var fastingDurationRemaining: Int = 0
     var isFastingActive = false
-    var fastingDays: Int = 0 // Default days
-    var fastingHours: Int = 0 // Default hours
-    var fastingMinutes: Int = 0 // Default minutes
-    var fastingTypeSelected = false // To track if fasting type is selected
-    var fastingDurationSelected = false // To track if duration is selected
+    var fastingDays: Int = 0
+    var fastingHours: Int = 0
+    var fastingMinutes: Int = 0
+    var fastingTypeSelected = false
+    var fastingDurationSelected = false
     
     var healthTipTimer: Timer?
     var currentTipIndex = 0
     
-    // Array of Bible verses about fasting with their explanations
     let fastingVerses = [
         ("Matthew 6:16", "When you fast, do not look somber as the hypocrites do, for they disfigure their faces to show others they are fasting.", "This verse teaches us to fast humbly and for spiritual purposes, not to seek admiration from others."),
         ("Isaiah 58:6", "Is not this the kind of fasting I have chosen: to loose the chains of injustice?", "This verse emphasizes fasting as a way to fight against injustice and oppression."),
@@ -42,7 +41,6 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         "Remember to break your fast slowly to avoid digestive discomfort."
     ]
     
-    // UI Elements
     lazy var fastingTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Choose Your Fasting Type"
@@ -61,7 +59,6 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         return segmentedControl
     }()
     
-    // Label to trigger picker view
     lazy var chooseDaysLabel: UILabel = {
         let label = UILabel()
         label.text = "Choose Your Days"
@@ -75,20 +72,19 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         return label
     }()
     
-    // Picker for selecting fasting days (initially hidden)
     lazy var dayPicker: UIPickerView = {
         let picker = UIPickerView()
-        picker.dataSource = self // Set dataSource
-        picker.delegate = self // Set delegate
-        picker.isHidden = true // Hidden initially
+        picker.dataSource = self
+        picker.delegate = self
+        picker.isHidden = true
         picker.translatesAutoresizingMaskIntoConstraints = false
         return picker
     }()
     
-    // Dynamic Verse Label (hidden initially)
+    
     lazy var verseLabel: UILabel = {
         let label = UILabel()
-        label.text = "" // Empty initially
+        label.text = ""
         label.font = UIFont(name: "Chalkboard SE", size: 18)
         label.textColor = .systemRed
         label.numberOfLines = 0
@@ -109,7 +105,6 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         return label
     }()
     
-
     lazy var countdownTimerLabel: UILabel = {
         let label = UILabel()
         label.text = "00:00:00:00"
@@ -121,7 +116,6 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         return label
     }()
     
-    // Fasting Button
     lazy var fastingButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Start Fasting", for: .normal)
@@ -162,7 +156,6 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         view.addSubview(fastingButton)
         view.addSubview(healthTipLabel)
         
-        // Set constraints
         fastingTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
         fastingTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
@@ -188,12 +181,10 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         verseExplanationLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         verseExplanationLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
-//        healthTipLabel.topAnchor.constraint(equalTo: fastingOptions.bottomAnchor, constant: -50).isActive = true
         healthTipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         healthTipLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         healthTipLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         healthTipLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        
         
         fastingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
         fastingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -201,18 +192,19 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         fastingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+    
     @objc func showDayPicker() {
         dayPicker.isHidden = false
         verseLabel.isHidden = true
         verseExplanationLabel.isHidden = true
         countdownTimerLabel.isHidden = true
         healthTipLabel.isHidden = true
-  
+        
     }
     
     @objc func fastingButtonPressed() {
         if !fastingTypeSelected || !fastingDurationSelected {
-
+            
             let alertController = UIAlertController(title: "Missing Selections", message: "Please select a fasting type and duration before starting.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alertController, animated: true, completion: nil)
@@ -227,7 +219,7 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     func startFasting() {
         isFastingActive = true
-        fastingDurationRemaining = (fastingDays * 86400) + (fastingHours * 3600) + (fastingMinutes * 60) // Convert days to seconds
+        fastingDurationRemaining = (fastingDays * 86400) + (fastingHours * 3600) + (fastingMinutes * 60)
         fastingTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateFastingTimer), userInfo: nil, repeats: true)
         
         dayPicker.isHidden = true
@@ -245,7 +237,7 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         healthTipLabel.isHidden = false
         startHealthTipAnimation()
         
-
+        
         fastingButton.setTitle("Stop Fasting", for: .normal)
         fastingButton.backgroundColor = .red
     }
@@ -255,7 +247,7 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         fastingTimer?.invalidate()
         fastingTimer = nil
         
-
+        
         verseLabel.isHidden = true
         verseExplanationLabel.isHidden = true
         countdownTimerLabel.isHidden = true
@@ -301,12 +293,12 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     func showFastingResult() {
         let totalSeconds = (fastingDays * 86400) + (fastingHours * 3600) + (fastingMinutes * 60)
         let elapsedTime = totalSeconds - fastingDurationRemaining
-
+        
         let days = elapsedTime / 86400
         let hours = (elapsedTime % 86400) / 3600
         let minutes = (elapsedTime % 3600) / 60
         let seconds = elapsedTime % 60
-
+        
         var fastingDurationString = ""
         
         if days > 0 {
@@ -324,7 +316,7 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             if !fastingDurationString.isEmpty { fastingDurationString += ", " }
             fastingDurationString += "\(seconds) second\(seconds > 1 ? "s" : "")"
         }
-
+        
         if fastingDurationString.isEmpty {
             fastingDurationString = "0 minutes"
         }
@@ -381,7 +373,7 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
-        case 0: return 31 
+        case 0: return 31
         case 1: return 24
         case 2: return 60
         default: return 0
@@ -420,14 +412,14 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
     
     @objc func animateHealthTip() {
-
+        
         UIView.animate(withDuration: 2.0, animations: {
             self.healthTipLabel.alpha = 0.0
         }) { _ in
-
+            
             self.currentTipIndex = (self.currentTipIndex + 1) % self.healthTips.count
             self.healthTipLabel.text = self.healthTips[self.currentTipIndex]
-
+            
             UIView.animate(withDuration: 1.0) {
                 self.healthTipLabel.alpha = 1.0
             }
@@ -438,9 +430,9 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         super.viewWillDisappear(animated)
         healthTipTimer?.invalidate()
     }
- 
+    
     func stopHealthTipAnimation() {
         healthTipTimer?.invalidate()
     }
 }
-    
+

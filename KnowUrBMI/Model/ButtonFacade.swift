@@ -50,10 +50,10 @@ class ButtonFacade {
 
         view.addSubview(stackView)
 
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 40) // Adjusting placement to avoid overlap
-        ])
+
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            stackView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 40).isActive = true // Adjusting placement to avoid overlap
+
 
         // Set constraints for each button
         buttons.forEach { button in

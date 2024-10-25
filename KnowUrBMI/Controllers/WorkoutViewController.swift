@@ -3,7 +3,6 @@
 //  KnowUrBMI
 //
 //  Created by Reuben Simphiwe Kuse on 2024/10/16.
-//
 
 import Foundation
 import UIKit
@@ -234,22 +233,22 @@ class WorkoutViewController: UIViewController {
     }
     
     func startTimer() {
-        timer?.invalidate()  // Reset timer
-        timeRemaining = 2700 // 45 minutes (45 * 60 seconds)
+        timer?.invalidate()
+        timeRemaining = 2700
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     func pauseTimer() {
-        timer?.invalidate()  // Pause timer
+        timer?.invalidate()
     }
 
     func resumeTimer() {
-        startTimer()  // Resume timer from where it left off
+        startTimer()
     }
 
     func resetTimer() {
-        timer?.invalidate()  // Stop timer
-        timeRemaining = 2700  // Reset to 45 minutes
+        timer?.invalidate()
+        timeRemaining = 2700
         timerLabel.text = "45:00"
         endWorkoutButton.isHidden = true
         startWorkoutButton.isHidden = false
@@ -268,7 +267,7 @@ class WorkoutViewController: UIViewController {
     }
     
     func calculateCaloriesBurned() {
-        caloriesBurned += (userBMI > 24.9 ? 500 : 100) // Adjust calorie burn based on BMI
+        caloriesBurned += (userBMI > 24.9 ? 500 : 100)
     }
     
     func showWorkoutResult() {

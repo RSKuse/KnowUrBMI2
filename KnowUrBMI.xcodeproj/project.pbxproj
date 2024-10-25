@@ -20,6 +20,7 @@
 		49472EF6182EDDFE2E69A634 /* Pods_KnowUrBMI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF63848534E1E4105173FF55 /* Pods_KnowUrBMI.framework */; };
 		F3D73B082CC5902B00D6BAFA /* workout_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = F3D73B072CC5902B00D6BAFA /* workout_animation.json */; };
 		F3D73B0A2CC5C80700D6BAFA /* the_background.json in Resources */ = {isa = PBXBuildFile; fileRef = F3D73B092CC5C80700D6BAFA /* the_background.json */; };
+		F3D73BA52CCBC28100D6BAFA /* ButtonFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D73BA42CCBC28100D6BAFA /* ButtonFacade.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,7 @@
 		F36139CE2CBFC87800AC7BCD /* KnowUrBMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowUrBMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3D73B072CC5902B00D6BAFA /* workout_animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = workout_animation.json; sourceTree = "<group>"; };
 		F3D73B092CC5C80700D6BAFA /* the_background.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = the_background.json; sourceTree = "<group>"; };
+		F3D73BA42CCBC28100D6BAFA /* ButtonFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFacade.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				4512C34B2CC3577700DFE136 /* BMI.swift */,
 				4512C34C2CC3577700DFE136 /* CalculatorBrain.swift */,
+				F3D73BA42CCBC28100D6BAFA /* ButtonFacade.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				4512C3552CC3577800DFE136 /* FastingViewController.swift in Sources */,
 				4512C3562CC3577800DFE136 /* WorkoutViewController.swift in Sources */,
 				4512C3572CC3577800DFE136 /* ResultViewController.swift in Sources */,
+				F3D73BA52CCBC28100D6BAFA /* ButtonFacade.swift in Sources */,
 				4512C3582CC3577800DFE136 /* CalculatorBrain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

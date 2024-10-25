@@ -86,34 +86,13 @@ class CalculateViewController: UIViewController {
         return slider
     }()
     
-    lazy var techButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("CALCULATE", for: .normal)
-        button.setTitleColor(.purple, for: .normal)
-        button.layer.cornerRadius = 20
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0, height: 4)
-        button.layer.shadowOpacity = 0.5
-        button.layer.shadowRadius = 4.0
-        
-        // Adding a gradient to the button
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = button.bounds
-        gradientLayer.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        gradientLayer.cornerRadius = 20
-        button.layer.insertSublayer(gradientLayer, at: 0)
-        
-        button.addTarget(self, action: #selector(calculatePressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
         setupUI()
+        setupButtons()
    
     }
     
@@ -126,8 +105,6 @@ class CalculateViewController: UIViewController {
         view.addSubview(weightLabel)
         view.addSubview(weightValueLabel)
         view.addSubview(weightSlider)
-        view.addSubview(techButton)
-        
     
         
         calculatorBackgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -160,42 +137,18 @@ class CalculateViewController: UIViewController {
         weightSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         weightSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
 
-        techButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        techButton.topAnchor.constraint(equalTo: weightSlider.bottomAnchor, constant: 40).isActive = true
-        techButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        techButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
+    }
+    
 
-    }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
+    func setupButtons() {
+        let buttonData = [
+            (title: "CALCULATE", color: UIColor.systemPurple, action: #selector(calculatePressed)),
+            (title: "RESET", color: UIColor.systemRed, action: #selector(resetPressed))
+        ]
         
-        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            updateColorsForCurrentMode()
-        }
-    }
-    
-    func updateColorsForCurrentMode() {
-        let currentInterfaceStyle = traitCollection.userInterfaceStyle
-        
-        if currentInterfaceStyle == .dark {
-            view.backgroundColor = .black
-            titleLabel.textColor = .white
-            heightLabel.textColor = .lightGray
-            heightValueLabel.textColor = .lightGray
-            weightLabel.textColor = .lightGray
-            weightValueLabel.textColor = .lightGray
-            techButton.setTitleColor(.white, for: .normal)
-        } else {
-            view.backgroundColor = .white
-            titleLabel.textColor = .darkGray
-            heightLabel.textColor = .black
-            heightValueLabel.textColor = .black
-            weightLabel.textColor = .black
-            weightValueLabel.textColor = .black
-            techButton.setTitleColor(.purple, for: .normal)
-        }
+        ButtonFacade.createButtonsAndLayout(in: view, buttonData: buttonData, target: self)
+
     }
     
     @objc func heightSliderChanged(_ sender: UISlider) {
@@ -220,5 +173,10 @@ class CalculateViewController: UIViewController {
         resultVC.color = calculatorBrain.getColor()
         
         navigationController?.pushViewController(resultVC, animated: true)
+    }
+    
+    @objc func resetPressed() {
+        heightSlider.value = 1.5
+        weightSlider.value = 100
     }
 }

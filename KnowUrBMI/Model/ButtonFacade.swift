@@ -19,6 +19,11 @@ struct ButtonData {
 
 class ButtonFacade {
     
+    enum ButtonPosition {
+        case center
+        case bottom
+    }
+    
     // Main facade method that generates and lays out buttons
     static func createButtonsAndLayout(in view: UIView, buttonData: [ButtonData], target: AnyObject) {
         let buttons = createButtons(buttonData, target: target)
@@ -47,7 +52,7 @@ class ButtonFacade {
     }
 
     // Layout the buttons in a vertical stack inside the view
-    static func layoutButtons(_ buttons: [UIButton], in view: UIView) {
+    static func layoutButtons(_ buttons: [UIButton], in view: UIView, position: ButtonPosition = .center) {
         let stackView = UIStackView(arrangedSubviews: buttons)
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -57,14 +62,24 @@ class ButtonFacade {
 
         view.addSubview(stackView)
 
+        // Set constraints based on position
+        switch position {
+        case .center:
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            stackView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 40).isActive = true // Adjusting placement to avoid overlap
+            stackView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 40).isActive = true
 
+        case .bottom:
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        }
+
+        // Set constraints for each button
         buttons.forEach { button in
             button.widthAnchor.constraint(equalToConstant: 200).isActive = true
             button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         }
     }
+    
 
 
     static func applyAdditionalEffects(to buttons: [UIButton]) {

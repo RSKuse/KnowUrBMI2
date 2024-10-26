@@ -12,6 +12,9 @@ class ResultViewController: UIViewController {
     var bmiValue: String?
     var advice: String?
     var color: UIColor?
+    
+    var workoutButton: UIButton?
+    var fastingButton: UIButton?
 
     lazy var resultBackgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -49,10 +52,6 @@ class ResultViewController: UIViewController {
         return label
     }()
 
-    // These are the button titles you want to check
-    var workoutButton: UIButton?
-    var fastingButton: UIButton?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backButtonTitle = "Back"
@@ -78,16 +77,14 @@ class ResultViewController: UIViewController {
 
     func setupButtons() {
         let buttonData = [
-            (title: "RECALCULATE", color: UIColor.systemPurple, action: #selector(recalculatePressed)),
-            (title: "Workout Suggestions", color: UIColor.systemBlue, action: #selector(workoutPressed)),
-            (title: "Fasting Ideas", color: UIColor.systemGreen, action: #selector(fastingPressed)),
-            (title: "View Progress", color: UIColor.systemOrange, action: #selector(showProgress))
+            ButtonData(title: "RECALCULATE", color: .systemPurple, action: #selector(recalculatePressed)),
+            ButtonData(title: "Workout Suggestions", color: .systemBlue, action: #selector(workoutPressed)),
+            ButtonData(title: "Fasting Ideas", color: .systemGreen, action: #selector(fastingPressed), isEnabled: true),
+            ButtonData(title: "View Progress", color: .systemOrange, action: #selector(showProgress), isEnabled: false)
         ]
 
-        // Use the ButtonFacade to create the buttons
         let buttons = ButtonFacade.createButtons(buttonData, target: self)
 
-        // Assign specific buttons to class variables for later access
         workoutButton = buttons.first { $0.title(for: .normal) == "Workout Suggestions" }
         fastingButton = buttons.first { $0.title(for: .normal) == "Fasting Ideas" }
 

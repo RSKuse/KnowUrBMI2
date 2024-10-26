@@ -5,36 +5,43 @@
 //  Created by Reuben Simphiwe Kuse on 2024/10/25.
 //
 
-import Foundation
+
 import Foundation
 import UIKit
 
-// Facade class to simplify interaction for creating and managing buttons
-// Facade class to simplify interaction for creating and managing buttons
+
+struct ButtonData {
+    var title: String
+    var color: UIColor
+    var action: Selector
+    var isEnabled: Bool = true // Add this property to control the enabled state
+}
+
 class ButtonFacade {
     
     // Main facade method that generates and lays out buttons
-    static func createButtonsAndLayout(in view: UIView, buttonData: [(title: String, color: UIColor, action: Selector)], target: AnyObject) {
+    static func createButtonsAndLayout(in view: UIView, buttonData: [ButtonData], target: AnyObject) {
         let buttons = createButtons(buttonData, target: target)
         layoutButtons(buttons, in: view)
         applyAdditionalEffects(to: buttons)
     }
 
-    // Public generic method to create buttons (changed from private to public)
-    static func createButtons(_ buttonData: [(title: String, color: UIColor, action: Selector)], target: AnyObject) -> [UIButton] {
+    // Public generic method to create buttons
+    static func createButtons(_ buttonData: [ButtonData], target: AnyObject) -> [UIButton] {
         return buttonData.map { data in
-            createButton(title: data.title, backgroundColor: data.color, target: target, action: data.action)
+            createButton(data: data, target: target)
         }
     }
 
     // Generic button creation function
-    private static func createButton(title: String, backgroundColor: UIColor, target: AnyObject, action: Selector) -> UIButton {
+    private static func createButton(data: ButtonData, target: AnyObject) -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle(title, for: .normal)
+        button.setTitle(data.title, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = backgroundColor
+        button.backgroundColor = data.isEnabled ? data.color : .systemGray // Gray out if disabled
         button.layer.cornerRadius = 20
-        button.addTarget(target, action: action, for: .touchUpInside)
+        button.isEnabled = data.isEnabled // Set enabled state
+        button.addTarget(target, action: data.action, for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }
@@ -50,19 +57,16 @@ class ButtonFacade {
 
         view.addSubview(stackView)
 
-
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
             stackView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 40).isActive = true // Adjusting placement to avoid overlap
 
-
-        // Set constraints for each button
         buttons.forEach { button in
             button.widthAnchor.constraint(equalToConstant: 200).isActive = true
             button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         }
     }
 
-    // Apply shadow and gradient after layout
+
     static func applyAdditionalEffects(to buttons: [UIButton]) {
         for button in buttons {
             button.layer.shadowColor = UIColor.black.cgColor
@@ -72,4 +76,3 @@ class ButtonFacade {
         }
     }
 }
-

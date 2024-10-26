@@ -25,6 +25,8 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     var healthTipTimer: Timer?
     var currentTipIndex = 0
     
+    var fastingButton: UIButton?
+    
     let fastingVerses = [
         ("Matthew 6:16", "When you fast, do not look somber as the hypocrites do, for they disfigure their faces to show others they are fasting.", "This verse teaches us to fast humbly and for spiritual purposes, not to seek admiration from others."),
         ("Isaiah 58:6", "Is not this the kind of fasting I have chosen: to loose the chains of injustice?", "This verse emphasizes fasting as a way to fight against injustice and oppression."),
@@ -81,7 +83,6 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         return picker
     }()
     
-    
     lazy var verseLabel: UILabel = {
         let label = UILabel()
         label.text = ""
@@ -116,17 +117,6 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         return label
     }()
     
-    lazy var fastingButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Start Fasting", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemGreen
-        button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(fastingButtonPressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     lazy var healthTipLabel: UILabel = {
         let label = UILabel()
         label.text = healthTips[0]
@@ -142,6 +132,7 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        setupButtonFacade()
         setupUI()
     }
     
@@ -153,7 +144,6 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         view.addSubview(verseLabel)
         view.addSubview(verseExplanationLabel)
         view.addSubview(countdownTimerLabel)
-        view.addSubview(fastingButton)
         view.addSubview(healthTipLabel)
         
         fastingTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
@@ -186,10 +176,28 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         healthTipLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         healthTipLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
-        fastingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
-        fastingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        fastingButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        fastingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    
+    private func setupButtonFacade() {
+        let buttonData = ButtonData(
+            title: "Start Fasting",
+            color: .systemGreen,
+            action: #selector(fastingButtonPressed),
+            isEnabled: true
+        )
+
+        let buttons = ButtonFacade.createButtons([buttonData], target: self)
+        ButtonFacade.layoutButtons(buttons, in: view, position: .bottom)
+        fastingButton = buttons.first
+    }
+    
+    private func updateFastingButtonState(isFastingActive: Bool) {
+        let title = isFastingActive ? "Stop Fasting" : "Start Fasting"
+        let color = isFastingActive ? UIColor.red : UIColor.systemGreen
+
+        fastingButton?.setTitle(title, for: .normal)
+        fastingButton?.backgroundColor = color
     }
     
     
@@ -204,8 +212,11 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     @objc func fastingButtonPressed() {
         if !fastingTypeSelected || !fastingDurationSelected {
-            
-            let alertController = UIAlertController(title: "Missing Selections", message: "Please select a fasting type and duration before starting.", preferredStyle: .alert)
+            let alertController = UIAlertController(
+                title: "Missing Selections",
+                message: "Please select a fasting type and duration before starting.",
+                preferredStyle: .alert
+            )
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alertController, animated: true, completion: nil)
         } else {
@@ -219,52 +230,36 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     func startFasting() {
         isFastingActive = true
+        updateFastingButtonState(isFastingActive: true)
         fastingDurationRemaining = (fastingDays * 86400) + (fastingHours * 3600) + (fastingMinutes * 60)
         fastingTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateFastingTimer), userInfo: nil, repeats: true)
-        
+
+        // Show the verse and timer
         dayPicker.isHidden = true
         let randomVerse = getRandomVerse()
-        let fullVerse = "\(randomVerse.0): \(randomVerse.1)"
-        let verseExplanation = randomVerse.2
-        
-        verseLabel.text = fullVerse
-        verseExplanationLabel.text = verseExplanation
-        
+        verseLabel.text = "\(randomVerse.0): \(randomVerse.1)"
+        verseExplanationLabel.text = randomVerse.2
         verseLabel.isHidden = false
         verseExplanationLabel.isHidden = false
         countdownTimerLabel.isHidden = false
-        
+
+
         healthTipLabel.isHidden = false
         startHealthTipAnimation()
-        
-        
-        fastingButton.setTitle("Stop Fasting", for: .normal)
-        fastingButton.backgroundColor = .red
     }
-    
+
     func stopFasting() {
         isFastingActive = false
+        updateFastingButtonState(isFastingActive: false)
         fastingTimer?.invalidate()
         fastingTimer = nil
-        
-        
+
+
         verseLabel.isHidden = true
         verseExplanationLabel.isHidden = true
         countdownTimerLabel.isHidden = true
-        
         healthTipLabel.isHidden = true
         stopHealthTipAnimation()
-        
-        fastingButton.setTitle("Start Fasting", for: .normal)
-        fastingButton.backgroundColor = .systemGreen
-        
-        // Reset the UI
-        fastingButton.setTitle("Start Fasting", for: .normal)
-        fastingButton.backgroundColor = .systemGreen
-        chooseDaysLabel.text = "Choose Your Fasting Duration"
-        fastingTypeSelected = false
-        fastingDurationSelected = false
-        fastingOptions.selectedSegmentIndex = -1
     }
     
     func confirmStopFasting() {

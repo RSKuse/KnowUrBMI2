@@ -164,8 +164,6 @@ class WorkoutViewController: UIViewController {
             ButtonData(title: "Start Workout", color: .systemGreen, action: #selector(startWorkout), isEnabled: true),
             ButtonData(title: "End Workout", color: .systemRed, action: #selector(endWorkout), isEnabled: true) // Start as disabled
         ]
-
-        // Use ButtonFacade to create and layout buttons
         let buttons = ButtonFacade.createButtons(buttonData, target: self)
         ButtonFacade.layoutButtons(buttons, in: view, position: .bottom)
     }
@@ -185,28 +183,23 @@ class WorkoutViewController: UIViewController {
         workoutLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         workoutLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
-        // Workout image below workout label
         workoutImageView.topAnchor.constraint(equalTo: workoutLabel.bottomAnchor, constant: 10).isActive = true
         workoutImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         workoutImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         workoutImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
 
-        // Motivation label below the workout image
         motivationLabel.topAnchor.constraint(equalTo: workoutImageView.bottomAnchor, constant: 10).isActive = true
         motivationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         motivationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
 
-        // Suggestion label below the motivation label
         suggestionLabel.topAnchor.constraint(equalTo: motivationLabel.bottomAnchor, constant: 10).isActive = true
         suggestionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         suggestionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
 
-        // Meal plan label below the suggestion label
         mealPlanLabel.topAnchor.constraint(equalTo: suggestionLabel.bottomAnchor, constant: 10).isActive = true
         mealPlanLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         mealPlanLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
 
-        // Timer label below the meal plan label
         timerLabel.topAnchor.constraint(equalTo: mealPlanLabel.bottomAnchor, constant: 20).isActive = true
         timerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
   

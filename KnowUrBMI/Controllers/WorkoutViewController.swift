@@ -62,46 +62,46 @@ class WorkoutViewController: UIViewController {
         return label
     }()
     
-    lazy var startWorkoutButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Start Workout", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemGreen
-        button.layer.cornerRadius = 15
-        button.layer.shadowColor = UIColor.systemGreen.cgColor
-        button.layer.shadowRadius = 10
-        button.layer.shadowOpacity = 0.1
-        button.layer.shadowOffset = CGSize(width: 0, height: 0)
-        button.addTarget(self, action: #selector(startWorkout), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-
-        let pulse = CABasicAnimation(keyPath: "transform.scale")
-        pulse.duration = 1.0
-        pulse.fromValue = 0.95
-        pulse.toValue = 1.05
-        pulse.autoreverses = true
-        pulse.repeatCount = .infinity
-        pulse.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        button.layer.add(pulse, forKey: "pulseAnimation")
-
-        return button
-    }()
+//    lazy var startWorkoutButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setTitle("Start Workout", for: .normal)
+//        button.setTitleColor(.white, for: .normal)
+//        button.backgroundColor = .systemGreen
+//        button.layer.cornerRadius = 15
+//        button.layer.shadowColor = UIColor.systemGreen.cgColor
+//        button.layer.shadowRadius = 10
+//        button.layer.shadowOpacity = 0.1
+//        button.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        button.addTarget(self, action: #selector(startWorkout), for: .touchUpInside)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//
+//        let pulse = CABasicAnimation(keyPath: "transform.scale")
+//        pulse.duration = 1.0
+//        pulse.fromValue = 0.95
+//        pulse.toValue = 1.05
+//        pulse.autoreverses = true
+//        pulse.repeatCount = .infinity
+//        pulse.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+//        button.layer.add(pulse, forKey: "pulseAnimation")
+//
+//        return button
+//    }()
     
-    lazy var endWorkoutButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("End Workout", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemRed
-        button.layer.cornerRadius = 15
-        button.layer.shadowColor = UIColor.systemRed.cgColor
-        button.layer.shadowRadius = 10
-        button.layer.shadowOpacity = 0.1
-        button.layer.shadowOffset = CGSize(width: 0, height: 0)
-        button.isHidden = true
-        button.addTarget(self, action: #selector(endWorkout), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+//    lazy var endWorkoutButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setTitle("End Workout", for: .normal)
+//        button.setTitleColor(.white, for: .normal)
+//        button.backgroundColor = .systemRed
+//        button.layer.cornerRadius = 15
+//        button.layer.shadowColor = UIColor.systemRed.cgColor
+//        button.layer.shadowRadius = 10
+//        button.layer.shadowOpacity = 0.1
+//        button.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        button.isHidden = true
+//        button.addTarget(self, action: #selector(endWorkout), for: .touchUpInside)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()
     
     lazy var timerLabel: UILabel = {
         let label = UILabel()
@@ -146,6 +146,7 @@ class WorkoutViewController: UIViewController {
         super.viewDidLoad()
         applyGradientBackground()
         setupUI()
+        setupButtons()
         showWorkoutSuggestion()
     }
 
@@ -157,6 +158,17 @@ class WorkoutViewController: UIViewController {
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    
+    private func setupButtons() {
+        let buttonData = [
+            ButtonData(title: "Start Workout", color: .systemGreen, action: #selector(startWorkout), isEnabled: true),
+            ButtonData(title: "End Workout", color: .systemRed, action: #selector(endWorkout), isEnabled: true) // Start as disabled
+        ]
+        let buttons = ButtonFacade.createButtons(buttonData, target: self)
+        ButtonFacade.layoutButtons(buttons, in: view, position: .bottom)
+    }
+    
+    
     private func setupUI() {
 
         view.addSubview(motivationLabel)
@@ -164,42 +176,32 @@ class WorkoutViewController: UIViewController {
         view.addSubview(workoutLabel)
         view.addSubview(suggestionLabel)
         view.addSubview(mealPlanLabel)
-        view.addSubview(startWorkoutButton)
-        view.addSubview(endWorkoutButton)
         view.addSubview(timerLabel)
+        view.addSubview(motivationLabel)
+        view.addSubview(workoutImageView)
 
-            workoutLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
-            workoutLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            
-            suggestionLabel.topAnchor.constraint(equalTo: workoutLabel.bottomAnchor, constant: 20).isActive = true
-            suggestionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-            suggestionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-            
-            mealPlanLabel.topAnchor.constraint(equalTo: suggestionLabel.bottomAnchor, constant: 20).isActive = true
-            mealPlanLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-            mealPlanLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-            
-            startWorkoutButton.topAnchor.constraint(equalTo: mealPlanLabel.bottomAnchor, constant: 20).isActive = true
-            startWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            startWorkoutButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-            startWorkoutButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-            
-            endWorkoutButton.topAnchor.constraint(equalTo: startWorkoutButton.bottomAnchor, constant: 20).isActive = true
-            endWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            endWorkoutButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-            endWorkoutButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-            
-            workoutImageView.topAnchor.constraint(equalTo: endWorkoutButton.bottomAnchor, constant: 20).isActive = true
-            workoutImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            workoutImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-            
-            motivationLabel.topAnchor.constraint(equalTo: workoutImageView.bottomAnchor, constant: 20).isActive = true
-            motivationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-            motivationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-            motivationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            
-            timerLabel.topAnchor.constraint(equalTo: motivationLabel.bottomAnchor, constant: 20).isActive = true
-            timerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        workoutLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        workoutLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
+        workoutImageView.topAnchor.constraint(equalTo: workoutLabel.bottomAnchor, constant: 10).isActive = true
+        workoutImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        workoutImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        workoutImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+
+        motivationLabel.topAnchor.constraint(equalTo: workoutImageView.bottomAnchor, constant: 10).isActive = true
+        motivationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        motivationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+
+        suggestionLabel.topAnchor.constraint(equalTo: motivationLabel.bottomAnchor, constant: 10).isActive = true
+        suggestionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        suggestionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+
+        mealPlanLabel.topAnchor.constraint(equalTo: suggestionLabel.bottomAnchor, constant: 10).isActive = true
+        mealPlanLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        mealPlanLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+
+        timerLabel.topAnchor.constraint(equalTo: mealPlanLabel.bottomAnchor, constant: 20).isActive = true
+        timerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
   
     }
     
@@ -217,13 +219,12 @@ class WorkoutViewController: UIViewController {
     }
     
     @objc func startWorkout() {
-        endWorkoutButton.isHidden = false
-        startWorkoutButton.isHidden = true
+        toggleWorkoutButtons(isStarted: true)
         workoutCompletedDays += 1
         calculateCaloriesBurned()
         startTimer()
     }
-    
+
     @objc func endWorkout() {
         pauseTimer()
         let alert = UIAlertController(title: "End Workout", message: "Do you really want to stop?", preferredStyle: .alert)
@@ -250,8 +251,7 @@ class WorkoutViewController: UIViewController {
         timer?.invalidate()
         timeRemaining = 2700
         timerLabel.text = "45:00"
-        endWorkoutButton.isHidden = true
-        startWorkoutButton.isHidden = false
+        toggleWorkoutButtons(isStarted: false)
     }
     
     @objc func updateTimer() {
@@ -275,5 +275,13 @@ class WorkoutViewController: UIViewController {
         let alertController = UIAlertController(title: "Workout Completed!", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    private func toggleWorkoutButtons(isStarted: Bool) {
+        if let startWorkoutButton = view.subviews.compactMap({ $0 as? UIButton }).first(where: { $0.title(for: .normal) == "Start Workout" }),
+           let endWorkoutButton = view.subviews.compactMap({ $0 as? UIButton }).first(where: { $0.title(for: .normal) == "End Workout" }) {
+            startWorkoutButton.isHidden = isStarted
+            endWorkoutButton.isHidden = !isStarted
+        }
     }
 }

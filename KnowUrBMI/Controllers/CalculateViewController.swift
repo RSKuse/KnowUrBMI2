@@ -141,14 +141,14 @@ class CalculateViewController: UIViewController {
     
 
     
+
     func setupButtons() {
         let buttonData = [
-            (title: "CALCULATE", color: UIColor.systemPurple, action: #selector(calculatePressed)),
-            (title: "RESET", color: UIColor.systemRed, action: #selector(resetPressed))
+            ButtonData(title: "CALCULATE", color: .systemPurple, action: #selector(calculatePressed)),
+            ButtonData(title: "RESET", color: .systemRed, action: #selector(resetPressed), isEnabled: false) // Disabled button
         ]
         
         ButtonFacade.createButtonsAndLayout(in: view, buttonData: buttonData, target: self)
-
     }
     
     @objc func heightSliderChanged(_ sender: UISlider) {

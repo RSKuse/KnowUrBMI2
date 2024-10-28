@@ -80,7 +80,7 @@ class ResultViewController: UIViewController {
             ButtonData(title: "RECALCULATE", color: .systemPurple, action: #selector(recalculatePressed)),
             ButtonData(title: "Workout Suggestions", color: .systemBlue, action: #selector(workoutPressed)),
             ButtonData(title: "Fasting Ideas", color: .systemGreen, action: #selector(fastingPressed), isEnabled: true),
-            ButtonData(title: "View Progress", color: .systemOrange, action: #selector(showProgress), isEnabled: false)
+            ButtonData(title: "View Progress", color: .systemOrange, action: #selector(showProgress), isEnabled: true)
         ]
 
         let buttons = ButtonFacade.createButtons(buttonData, target: self)

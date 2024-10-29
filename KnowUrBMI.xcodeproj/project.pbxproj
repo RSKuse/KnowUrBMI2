@@ -21,6 +21,8 @@
 		F3D73B082CC5902B00D6BAFA /* workout_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = F3D73B072CC5902B00D6BAFA /* workout_animation.json */; };
 		F3D73B0A2CC5C80700D6BAFA /* the_background.json in Resources */ = {isa = PBXBuildFile; fileRef = F3D73B092CC5C80700D6BAFA /* the_background.json */; };
 		F3D73BA52CCBC28100D6BAFA /* ButtonFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D73BA42CCBC28100D6BAFA /* ButtonFacade.swift */; };
+		F3D73BA72CD040C700D6BAFA /* ProgressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D73BA62CD040C700D6BAFA /* ProgressData.swift */; };
+		F3D73BA92CD0410E00D6BAFA /* ProgressDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D73BA82CD0410E00D6BAFA /* ProgressDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +57,8 @@
 		F3D73B072CC5902B00D6BAFA /* workout_animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = workout_animation.json; sourceTree = "<group>"; };
 		F3D73B092CC5C80700D6BAFA /* the_background.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = the_background.json; sourceTree = "<group>"; };
 		F3D73BA42CCBC28100D6BAFA /* ButtonFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFacade.swift; sourceTree = "<group>"; };
+		F3D73BA62CD040C700D6BAFA /* ProgressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressData.swift; sourceTree = "<group>"; };
+		F3D73BA82CD0410E00D6BAFA /* ProgressDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				4512C34B2CC3577700DFE136 /* BMI.swift */,
+				F3D73BA62CD040C700D6BAFA /* ProgressData.swift */,
+				F3D73BA82CD0410E00D6BAFA /* ProgressDataManager.swift */,
 				4512C34C2CC3577700DFE136 /* CalculatorBrain.swift */,
 				F3D73BA42CCBC28100D6BAFA /* ButtonFacade.swift */,
 			);
@@ -271,7 +277,9 @@
 				4512C3522CC3577800DFE136 /* AppDelegate.swift in Sources */,
 				4512C3532CC3577800DFE136 /* ProgressViewController.swift in Sources */,
 				4512C3542CC3577800DFE136 /* CalculateViewController.swift in Sources */,
+				F3D73BA72CD040C700D6BAFA /* ProgressData.swift in Sources */,
 				4512C3552CC3577800DFE136 /* FastingViewController.swift in Sources */,
+				F3D73BA92CD0410E00D6BAFA /* ProgressDataManager.swift in Sources */,
 				4512C3562CC3577800DFE136 /* WorkoutViewController.swift in Sources */,
 				4512C3572CC3577800DFE136 /* ResultViewController.swift in Sources */,
 				F3D73BA52CCBC28100D6BAFA /* ButtonFacade.swift in Sources */,

@@ -260,6 +260,11 @@ class FastingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         countdownTimerLabel.isHidden = true
         healthTipLabel.isHidden = true
         stopHealthTipAnimation()
+       
+        let currentWeight = Float(69.8) // Update weight data if available
+        ProgressDataManager.shared.addData(for: Date(), calories: 0, weight: currentWeight)
+        ProgressDataManager.shared.saveData() // Save after updating
+        
     }
     
     func confirmStopFasting() {

@@ -62,47 +62,6 @@ class WorkoutViewController: UIViewController {
         return label
     }()
     
-//    lazy var startWorkoutButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("Start Workout", for: .normal)
-//        button.setTitleColor(.white, for: .normal)
-//        button.backgroundColor = .systemGreen
-//        button.layer.cornerRadius = 15
-//        button.layer.shadowColor = UIColor.systemGreen.cgColor
-//        button.layer.shadowRadius = 10
-//        button.layer.shadowOpacity = 0.1
-//        button.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        button.addTarget(self, action: #selector(startWorkout), for: .touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//
-//        let pulse = CABasicAnimation(keyPath: "transform.scale")
-//        pulse.duration = 1.0
-//        pulse.fromValue = 0.95
-//        pulse.toValue = 1.05
-//        pulse.autoreverses = true
-//        pulse.repeatCount = .infinity
-//        pulse.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-//        button.layer.add(pulse, forKey: "pulseAnimation")
-//
-//        return button
-//    }()
-    
-//    lazy var endWorkoutButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("End Workout", for: .normal)
-//        button.setTitleColor(.white, for: .normal)
-//        button.backgroundColor = .systemRed
-//        button.layer.cornerRadius = 15
-//        button.layer.shadowColor = UIColor.systemRed.cgColor
-//        button.layer.shadowRadius = 10
-//        button.layer.shadowOpacity = 0.1
-//        button.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        button.isHidden = true
-//        button.addTarget(self, action: #selector(endWorkout), for: .touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-    
     lazy var timerLabel: UILabel = {
         let label = UILabel()
         label.text = "00:00"
@@ -266,13 +225,19 @@ class WorkoutViewController: UIViewController {
         }
     }
     
-    func calculateCaloriesBurned() {
-        caloriesBurned += (userBMI > 24.9 ? 500 : 100)
+    func calculateCaloriesBurned() -> Int {
+        let calories = (userBMI > 24.9 ? 500 : 100) // Calculate based on condition
+        return calories // Ensure this function returns an Int value
     }
     
     func showWorkoutResult() {
         let message = "In \(workoutCompletedDays) days, you've burned \(caloriesBurned) calories and lost approximately \(Double(caloriesBurned) / 7700) kg."
         let alertController = UIAlertController(title: "Workout Completed!", message: message, preferredStyle: .alert)
+        let caloriesBurned = calculateCaloriesBurned()
+        let currentWeight: Float = 70.0 // Fetch or update weight data if available
+        ProgressDataManager.shared.addData(for: Date(), calories: caloriesBurned, weight: currentWeight)
+        ProgressDataManager.shared.saveData() // Save after updating
+        
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
@@ -284,4 +249,6 @@ class WorkoutViewController: UIViewController {
             endWorkoutButton.isHidden = !isStarted
         }
     }
+
+    
 }
